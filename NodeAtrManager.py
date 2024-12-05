@@ -28,7 +28,7 @@ class NodeAtributeManager:
         if sender in self.callback and self.callback[sender] is not None:
             self.callback[sender](sender, app_data, user_data)
 
-        # 同步模型和使用模型的项目
+        # 同步数据模型和使用数据模型的项目
         model, feild = user_data
         setattr(model, feild, app_data)
         for node_atribute in self._node_atr_map[(model, feild)]:

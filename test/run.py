@@ -48,6 +48,7 @@ def run():
         dpg.set_primary_window("main_window", True)
         with node_editor.node_editor(minimap=True):
             with node_editor.node(pos=(200, 100), user_data=test_attribute1):
+                dpg.draw_circle((100, 100), 25, color=(255, 255, 255, 255))
                 for field, value in test_attribute1.model_dump().items():
                     print(value, type(value))
                     if type(value) is int:

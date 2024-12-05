@@ -63,6 +63,7 @@ class NodeEditor:
             output_attr = dpg.get_item_user_data(output_id)
 
             if not (input_attr and output_attr):
+                print("input_attr or output_attr is None")
                 return False
             input_childs = dpg.get_item_children(input_id, slot=1)
             output_childs = dpg.get_item_children(output_id, slot=1)
@@ -70,21 +71,25 @@ class NodeEditor:
             if not (input_childs and output_childs) and not (
                 isinstance(input_childs, list) and isinstance(output_childs, list)
             ):
+                print("input_childs or output_childs is None")
                 return False
             if not (isinstance(input_childs, list) and isinstance(output_childs, list)):
+                print("input_childs or output_childs is not list")
                 return False
             if len(input_childs) != len(output_childs):
+                print("input_childs or output_childs is not equal")
                 return False
 
             for input_child, output_child in zip(
                 input_childs, output_childs, strict=False
             ):
-                if (
-                    dpg.get_item_type(input_child)[1]
-                    != dpg.get_item_type(output_child)[1]
-                ):
+                if dpg.get_item_type(input_child) != dpg.get_item_type(output_child):
+                    print("input_child or output_child is not equal")
                     return False
-
+            print(
+                [dpg.get_item_info(i) for i in input_childs],
+                [dpg.get_item_info(i) for i in output_childs],
+            )
             return True
 
         # 移除输入端的已存在的链接
@@ -94,7 +99,7 @@ class NodeEditor:
                 if app_data[1] == dpg.get_item_user_data(link)[1]:  # type: ignore
                     self.delink_callback(sender, link)
 
-        if check_link(app_data[0], app_data[1]):
+        if not check_link(app_data[0], app_data[1]):
             return
         remove_exist_link(sender, app_data)
 
