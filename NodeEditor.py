@@ -1,34 +1,48 @@
+from collections import defaultdict
 from contextlib import contextmanager
 from typing import Any, Callable
 
 from dearpygui import dearpygui as dpg
 
-from NodeEditorPopup import NodeEditorPopup
-
 
 class NodeEditor:
-    def __init__(self):
+    def __init__(
+        self,
+        node_editor_popup: Callable[[dict[int | str, list[int | str]]], None],
+        node_popup: Callable[[dict[int | str, list[int | str]]], None],
+        node_attribute_popup: Callable[[dict[int | str, list[int | str]]], None],
+    ):
+        """
+        这里是函数的简短描述。
+
+        :param node_editor_popup: 节点编辑器右键弹出窗口,参数是节点编辑器的所有节点->节点属性字典
+        :param node_popup: 节点右键弹出窗口,参数是节点编辑器的所有节点->节点属性字典
+        :param node_attribute_popup: 节点属性右键弹出窗口,参数是节点编辑器的所有节点->节点属性字典
+        :return: 函数不返回任何值。
+        """
+        self.node_editor_popup = node_editor_popup
+        self.node_popup = node_popup
+        self.node_attribute_popup = node_attribute_popup
+
         self.node_editor_instance: int
         self.node_list = []
         self.node_atr_list = []
+        self.node_atr_map: dict[int | str, list[int | str]] = defaultdict(list)
         self.link_list = []
 
-    def on_click_global(self):
-        nodeditor_popup_wnd = NodeEditorPopup.node_editor_pop_wnd()
-        node_popup_wnd = NodeEditorPopup.node_pop_wnd()
-        node_attribute_popup_wnd = NodeEditorPopup.node_attribute_pop_wnd()
+    def _on_click_global(self):
 
         # 节点属性右键菜单
         for node_attribute in self.node_atr_list:
             for node_attribute_item in dpg.get_item_children(node_attribute, slot=1):  # type: ignore
                 if dpg.get_item_state(node_attribute_item).get("hovered"):
-                    dpg.show_item(node_attribute_popup_wnd)
+                    self.node_attribute_popup(self.node_atr_map)
                     return
 
         # 节点右键菜单
         for node in self.node_list:
             if dpg.get_item_state(node).get("hovered"):
-                dpg.show_item(node_popup_wnd)
+                self.node_popup(self.node_atr_map)
                 return
 
         # 节点链接右键
@@ -38,24 +52,37 @@ class NodeEditor:
                 return
 
         # 节点编辑器菜单
-        dpg.show_item(nodeditor_popup_wnd)
+        self.node_editor_popup(self.node_atr_map)
 
-    def register_global_handler(self, node_editor: int | str):
+    def _register_global_handler(self, node_editor: int | str):
         with dpg.handler_registry() as _handlers:
             dpg.add_mouse_click_handler(
-                button=dpg.mvMouseButton_Right, callback=self.on_click_global
+                button=dpg.mvMouseButton_Right, callback=self._on_click_global
             )
 
-    def register_node(self, node: int | str):
+    def _register_node(self, node: int | str):
         self.node_list.append(node)
 
-    def register_node_attribute(self, node_attribute: int | str):
+    def _register_node_attribute(self, node_attribute: int | str):
+        p = dpg.get_item_parent(node_attribute)
+        if p and dpg.get_item_type(p) == "mvAppItemType::mvNode":
+            self.node_atr_map[p].append(node_attribute)
         self.node_atr_list.append(node_attribute)
+
+    def node_collaps(
+        self, sender: int | str, app_data: int | str, user_data: tuple[int | str, bool]
+    ):
+        node, collaps = user_data
+        for node_attr in self.node_atr_map[node]:
+            if collaps:
+                dpg.show_item(node_attr)
+            else:
+                dpg.hide_item(node_attr)
+        dpg.set_item_user_data(sender, (node, not collaps))
 
     # 链接节点
     def link_callback(self, sender: int | str, app_data: tuple[int | str, int | str]):
         # app_data -> (link_id1, link_id2)
-        print(app_data)
 
         # 链接双方的部件是否一样检查
         def check_link(input_id: int | str, output_id: int | str):
@@ -111,7 +138,6 @@ class NodeEditor:
     # 删除链接
     def delink_callback(self, sender: int | str, app_data: int | str):
         # app_data -> link_id
-        print(dpg.get_item_user_data(app_data))
         dpg.delete_item(app_data)
         self.link_list.remove(app_data)
 
@@ -158,7 +184,7 @@ class NodeEditor:
             callback=self.link_callback,
             delink_callback=self.delink_callback,
         ) as node_editor:
-            self.register_global_handler(node_editor)
+            self._register_global_handler(node_editor)
             self.node_editor_instance = node_editor
             yield node_editor  # type: ignore
 
@@ -182,6 +208,8 @@ class NodeEditor:
         tracked: bool = False,
         track_offset: float = 0.5,
         draggable: bool = True,
+        min_width: int = 100,
+        cllose_button: bool = True,
         **kwargs: Any,
     ):
         with dpg.node(
@@ -203,7 +231,36 @@ class NodeEditor:
             draggable=draggable,
             **kwargs,
         ) as node:
-            self.register_node(node)
+            self._register_node(node)
+            if cllose_button:
+                with dpg.node_attribute(attribute_type=dpg.mvNode_Attr_Static):
+                    anchor = dpg.add_spacer(width=min_width)
+                    button = dpg.add_button(
+                        arrow=True,
+                        direction=dpg.mvDir_Right,
+                        width=20,
+                        user_data=(node, False),
+                        callback=self.node_collaps,
+                    )
+
+                    def adjust_position(
+                        sender: int | str, app_data: Any, user_data: Any
+                    ):
+                        max_width = 0
+                        for na in dpg.get_item_children(node, slot=1):  # type: ignore
+                            for item in dpg.get_item_children(na, slot=1):  # type: ignore
+                                try:
+                                    item_width = dpg.get_item_rect_size(item)[0]
+                                    max_width = max(max_width, item_width)
+                                except Exception:
+                                    pass
+                        x, y = dpg.get_item_pos(anchor)
+                        dpg.set_item_pos(button, [x + max_width, y - 30])
+
+                    with dpg.item_handler_registry() as move_handler:
+                        dpg.add_item_visible_handler(callback=adjust_position)
+                    dpg.bind_item_handler_registry(node, move_handler)
+
             yield node
 
     @contextmanager  # type: ignore
@@ -243,7 +300,7 @@ class NodeEditor:
             category=category,
             **kwargs,
         ) as node_attribute:
-            self.register_node_attribute(node_attribute)
+            self._register_node_attribute(node_attribute)
             yield node_attribute
 
     def delete_item(
