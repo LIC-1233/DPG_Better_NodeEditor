@@ -4,55 +4,66 @@ from typing import Any, Callable
 
 from dearpygui import dearpygui as dpg
 
+from utils.BiDirectionalDict import BiDirectionalDict
+
 
 class NodeEditor:
     def __init__(
         self,
         node_editor_popup: Callable[[dict[int | str, list[int | str]]], None],
-        node_popup: Callable[[dict[int | str, list[int | str]]], None],
-        node_attribute_popup: Callable[[dict[int | str, list[int | str]]], None],
+        node_popup: Callable[[dict[int | str, list[int | str]], int | str], None],
+        node_attribute_popup: Callable[
+            [dict[int | str, list[int | str]], int | str], None
+        ],
+        check_link: Callable[[int | str, int | str], bool] | None = None,
+        delink_callback: Callable[[int | str, int | str], None] | None = None,
     ):
         """
         这里是函数的简短描述。
 
-        :param node_editor_popup: 节点编辑器右键弹出窗口,参数是节点编辑器的所有节点->节点属性字典
-        :param node_popup: 节点右键弹出窗口,参数是节点编辑器的所有节点->节点属性字典
-        :param node_attribute_popup: 节点属性右键弹出窗口,参数是节点编辑器的所有节点->节点属性字典
+        :param node_editor_popup: 节点编辑器右键弹出窗口,参数1:节点属性id->节点属性字典
+        :param node_popup: 节点右键弹出窗口,参数1:节点属性id->节点属性字典; 参数2:节点id
+        :param node_attribute_popup: 节点属性右键弹出窗口,参数1:节点属性id->节点属性字典; 参数2:节点属性id
+        :param link_callback: 节点链接回调函数,参数1:输入节点属性id; 参数2:输出节点属性id
+        :param delink_callback: 节点链接解除回调函数,参数1:输入节点属性id; 参数2:输出节点属性id
         :return: 函数不返回任何值。
         """
         self.node_editor_popup = node_editor_popup
         self.node_popup = node_popup
         self.node_attribute_popup = node_attribute_popup
 
+        self.check_link = check_link if check_link else self.defult_check_link
+        self.delink_callback = delink_callback
+
         self.node_editor_instance: int
         self.node_list = []
-        self.node_atr_list = []
-        self.node_atr_map: dict[int | str, list[int | str]] = defaultdict(list)
+        self.node_attr_list = []
+        self.node_attr_map: BiDirectionalDict = BiDirectionalDict()
         self.link_list = []
+        self.link_chain: BiDirectionalDict = BiDirectionalDict()
 
     def _on_click_global(self):
-
         # 节点属性右键菜单
-        for node_attribute in self.node_atr_list:
+        for node_attribute in self.node_attr_list:
             for node_attribute_item in dpg.get_item_children(node_attribute, slot=1):  # type: ignore
                 if dpg.get_item_state(node_attribute_item).get("hovered"):
-                    self.node_attribute_popup(self.node_atr_map)
+                    self.node_attribute_popup(self.node_attr_map.forward_map, node_attribute)
                     return
 
         # 节点右键菜单
         for node in self.node_list:
             if dpg.get_item_state(node).get("hovered"):
-                self.node_popup(self.node_atr_map)
+                self.node_popup(self.node_attr_map.forward_map, node)
                 return
 
         # 节点链接右键
         for link in self.link_list:
             if dpg.get_item_state(link).get("hovered"):
-                self.delink_callback(0, link)
+                self.delink(0, link)
                 return
 
         # 节点编辑器菜单
-        self.node_editor_popup(self.node_atr_map)
+        self.node_editor_popup(self.node_attr_map.forward_map)
 
     def _register_global_handler(self, node_editor: int | str):
         with dpg.handler_registry() as _handlers:
@@ -65,81 +76,108 @@ class NodeEditor:
 
     def _register_node_attribute(self, node_attribute: int | str):
         p = dpg.get_item_parent(node_attribute)
+        while p and dpg.get_item_type(p) != "mvAppItemType::mvNode":
+            p = dpg.get_item_parent(p)
         if p and dpg.get_item_type(p) == "mvAppItemType::mvNode":
-            self.node_atr_map[p].append(node_attribute)
-        self.node_atr_list.append(node_attribute)
+            self.node_attr_map.add(p, node_attribute)
+        self.node_attr_list.append(node_attribute)
 
     def node_collaps(
         self, sender: int | str, app_data: int | str, user_data: tuple[int | str, bool]
     ):
         node, collaps = user_data
-        for node_attr in self.node_atr_map[node]:
-            if collaps:
-                dpg.show_item(node_attr)
-            else:
-                dpg.hide_item(node_attr)
+        for node_attr in self.node_attr_map[node]:
+            for item in dpg.get_item_children(node_attr, slot=1):  # type: ignore
+                if collaps:
+                    dpg.show_item(item)
+                    dpg.configure_item(sender, direction=dpg.mvDir_Down)
+                else:
+                    dpg.hide_item(item)
+                    dpg.configure_item(sender, direction=dpg.mvDir_Right)
         dpg.set_item_user_data(sender, (node, not collaps))
 
+    # 链接双方的部件是否一样检查
+    @staticmethod
+    def defult_check_link(input_id: int | str, output_id: int | str):
+        input_attr = dpg.get_item_user_data(input_id)
+        output_attr = dpg.get_item_user_data(output_id)
+
+        if not (input_attr and output_attr):
+            print("input_attr or output_attr is None")
+            return False
+        input_childs = dpg.get_item_children(input_id, slot=1)
+        output_childs = dpg.get_item_children(output_id, slot=1)
+
+        if not (input_childs and output_childs) and not (
+            isinstance(input_childs, list) and isinstance(output_childs, list)
+        ):
+            print("input_childs or output_childs is None")
+            return False
+        if not (isinstance(input_childs, list) and isinstance(output_childs, list)):
+            print("input_childs or output_childs is not list")
+            return False
+        if len(input_childs) != len(output_childs):
+            print("input_childs or output_childs is not equal")
+            return False
+
+        for input_child, output_child in zip(input_childs, output_childs, strict=False):
+            if dpg.get_item_type(input_child) != dpg.get_item_type(output_child):
+                print("input_child or output_child is not equal")
+                return False
+        print(
+            [dpg.get_item_info(i) for i in input_childs],
+            [dpg.get_item_info(i) for i in output_childs],
+        )
+        return True
+
     # 链接节点
-    def link_callback(self, sender: int | str, app_data: tuple[int | str, int | str]):
-        # app_data -> (link_id1, link_id2)
+    def link_attr(self, sender: int | str, app_data: tuple[int | str, int | str]):
 
-        # 链接双方的部件是否一样检查
-        def check_link(input_id: int | str, output_id: int | str):
-            input_attr = dpg.get_item_user_data(input_id)
-            output_attr = dpg.get_item_user_data(output_id)
-
-            if not (input_attr and output_attr):
-                print("input_attr or output_attr is None")
-                return False
-            input_childs = dpg.get_item_children(input_id, slot=1)
-            output_childs = dpg.get_item_children(output_id, slot=1)
-
-            if not (input_childs and output_childs) and not (
-                isinstance(input_childs, list) and isinstance(output_childs, list)
-            ):
-                print("input_childs or output_childs is None")
-                return False
-            if not (isinstance(input_childs, list) and isinstance(output_childs, list)):
-                print("input_childs or output_childs is not list")
-                return False
-            if len(input_childs) != len(output_childs):
-                print("input_childs or output_childs is not equal")
-                return False
-
-            for input_child, output_child in zip(
-                input_childs, output_childs, strict=False
-            ):
-                if dpg.get_item_type(input_child) != dpg.get_item_type(output_child):
-                    print("input_child or output_child is not equal")
-                    return False
-            print(
-                [dpg.get_item_info(i) for i in input_childs],
-                [dpg.get_item_info(i) for i in output_childs],
-            )
-            return True
-
-        # 移除输入端的已存在的链接
-        # TODO 未来优化方向 = 建立[输出端_id:link_id]的index
-        def remove_exist_link(sender: int | str, app_data: tuple[int | str, int | str]):
-            for link in self.link_list:
-                if app_data[1] == dpg.get_item_user_data(link)[1]:  # type: ignore
-                    self.delink_callback(sender, link)
-
-        if not check_link(app_data[0], app_data[1]):
+        if not self.check_link(app_data[0], app_data[1]):
             return
-        remove_exist_link(sender, app_data)
 
         link_id = dpg.add_node_link(
-            app_data[0], app_data[1], user_data=app_data, parent=sender
+            app_data[0],
+            app_data[1],
+            user_data=app_data,
+            parent=self.node_editor_instance,
         )
         self.link_list.append(link_id)
+        self.link_chain.add(app_data[0], app_data[1])
+        print(link_id)
+        return link_id
 
     # 删除链接
-    def delink_callback(self, sender: int | str, app_data: int | str):
+    def delink(self, sender: int | str, app_data: int | str):
         # app_data -> link_id
-        dpg.delete_item(app_data)
+        self.delete_item(app_data)
         self.link_list.remove(app_data)
+        in_attr, out_attr = dpg.get_item_user_data(app_data) # type: ignore
+        self.link_chain.remove(in_attr, out_attr)
+
+    def get_link_id(self, attr_id: int | str) -> list[int | str]:
+        return [
+            link
+            for link in self.link_list
+            if attr_id in dpg.get_item_user_data(link)[0]  # type: ignore
+        ]
+
+    def auto_layout(self, sender: int | str, node_id: int | str,hgap:int=50,vgap:int=100):
+        init_pos = dpg.get_item_pos(node_id)
+        sub_nodes:list[list[int | str]] = []
+        
+        
+        while
+        for node_attr in self.node_attr_map[node_id]:
+
+            for index,sub_attr in self.link_chain[node_attr]:
+                for node,attrs in self.node_attr_map.items():
+                    sub_node = None
+                    if sub_attr in attrs:
+                        sub_node = node
+                        break
+                    if not sub_node:
+                        continue
 
     @contextmanager  # type: ignore
     def node_editor(
@@ -181,8 +219,10 @@ class NodeEditor:
             minimap=minimap,
             minimap_location=minimap_location,
             **kwargs,
-            callback=self.link_callback,
-            delink_callback=self.delink_callback,
+            callback=self.link_attr,
+            delink_callback=self.delink
+            if self.delink_callback is None
+            else self.delink_callback,
         ) as node_editor:
             self._register_global_handler(node_editor)
             self.node_editor_instance = node_editor
@@ -234,32 +274,39 @@ class NodeEditor:
             self._register_node(node)
             if cllose_button:
                 with dpg.node_attribute(attribute_type=dpg.mvNode_Attr_Static):
-                    anchor = dpg.add_spacer(width=min_width)
-                    button = dpg.add_button(
+                    # anchor = dpg.add_spacer(width=min_width)
+                    # button = dpg.add_button(
+                    #     arrow=True,
+                    #     direction=dpg.mvDir_Down,
+                    #     width=20,
+                    #     user_data=(node, False),
+                    #     callback=self.node_collaps,
+                    # )
+                    dpg.add_button(
                         arrow=True,
-                        direction=dpg.mvDir_Right,
+                        direction=dpg.mvDir_Down,
                         width=20,
                         user_data=(node, False),
                         callback=self.node_collaps,
                     )
 
-                    def adjust_position(
-                        sender: int | str, app_data: Any, user_data: Any
-                    ):
-                        max_width = 0
-                        for na in dpg.get_item_children(node, slot=1):  # type: ignore
-                            for item in dpg.get_item_children(na, slot=1):  # type: ignore
-                                try:
-                                    item_width = dpg.get_item_rect_size(item)[0]
-                                    max_width = max(max_width, item_width)
-                                except Exception:
-                                    pass
-                        x, y = dpg.get_item_pos(anchor)
-                        dpg.set_item_pos(button, [x + max_width, y - 30])
+                    # def adjust_position(
+                    #     sender: int | str, app_data: Any, user_data: Any
+                    # ):
+                    #     max_width = 0
+                    #     for na in dpg.get_item_children(node, slot=1):  # type: ignore
+                    #         for item in dpg.get_item_children(na, slot=1):  # type: ignore
+                    #             try:
+                    #                 item_width = dpg.get_item_rect_size(item)[0]
+                    #                 max_width = max(max_width, item_width)
+                    #             except Exception:
+                    #                 pass
+                    # x, y = dpg.get_item_pos(anchor)
+                    # dpg.set_item_pos(button, [x + max_width, y - 30])
 
-                    with dpg.item_handler_registry() as move_handler:
-                        dpg.add_item_visible_handler(callback=adjust_position)
-                    dpg.bind_item_handler_registry(node, move_handler)
+                    # with dpg.item_handler_registry() as move_handler:
+                    #     dpg.add_item_visible_handler(callback=adjust_position)
+                    # dpg.bind_item_handler_registry(node, move_handler)
 
             yield node
 
@@ -311,9 +358,21 @@ class NodeEditor:
         slot: int = -1,
         **kwargs: Any,
     ):
-        try:
+        if item in self.node_list:
             self.node_list.remove(item)
-            self.node_atr_list.remove(item)
-        except ValueError:
-            pass
+            node_attrs = self.node_attr_map[item]
+            for node_attr in node_attrs:
+                self.node_attr_list.remove(node_attr)
+            self.node_attr_map.remove_key(item)
+
+        if item in self.node_attr_list:
+            self.node_attr_list.remove(item)
+            self.node_attr_map.remove_value(item)
+            if item in self.link_chain:
+                self.link_chain.remove(item)
+        
+        if item in self.link_list:
+            in_attr, out_attr = dpg.get_item_user_data(item)  # type: ignore
+            self.link_chain.remove(in_attr, out_attr)
+            self.link_list.remove(item)
         dpg.delete_item(item, children_only=children_only, slot=slot, **kwargs)

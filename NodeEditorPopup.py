@@ -19,14 +19,18 @@ class NodeEditorPopup:
 
     # 节点右键菜单
     @staticmethod
-    def node_pop_wnd(node_atr_map: dict[int | str, list[int | str]]) -> Any:
+    def node_pop_wnd(
+        node_atr_map: dict[int | str, list[int | str]], node_id: int | str
+    ) -> Any:
         with dpg.window(popup=True, show=False, min_size=(0, 0)) as node_popup_wnd:
             dpg.add_text("node")
         return node_popup_wnd
 
     # 属性右键菜单
     @staticmethod
-    def node_attribute_pop_wnd(node_atr_map: dict[int | str, list[int | str]]) -> Any:
+    def node_attribute_pop_wnd(
+        node_atr_map: dict[int | str, list[int | str]], node_attr_id: int | str
+    ) -> Any:
         with dpg.window(
             popup=True, show=False, min_size=(0, 0)
         ) as node_attribute_popup_wnd:

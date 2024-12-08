@@ -14,6 +14,7 @@ pydantic = "^2.10.2"
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.31.1"
 ruff = "^0.8.1"
+babel = "^2.16.0"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
@@ -22,6 +23,7 @@ requires = ["poetry-core"]
 [tool.poe.tasks]
 format = "ruff format ."
 test = "python test/run.py"
+i18n = "pybabel extract -F babel.cfg -o ./locale/NodeEditor.pot ."
 
 [tool.ruff]
 target-version = "py310"

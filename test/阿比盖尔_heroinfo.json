@@ -1,0 +1,2550 @@
+{
+  "resistances": {
+    "stun": 0.5,
+    "poison": 0.3,
+    "bleed": 0.2,
+    "disease": 0.1,
+    "move": 0.2,
+    "debuff": 0.6,
+    "death_blow": 0.67,
+    "trap": 0.2
+  },
+  "crit": {},
+  "weapon": [
+    {
+      "name": "AbigailWilliams_weapon_0",
+      "atk": 0.0,
+      "dmg": [5, 10],
+      "crit": 0.05,
+      "spd": 5
+    },
+    {
+      "name": "AbigailWilliams_weapon_1",
+      "atk": 0.0,
+      "dmg": [6, 12],
+      "crit": 0.06,
+      "spd": 6,
+      "upgradeRequirementCode": 0
+    },
+    {
+      "name": "AbigailWilliams_weapon_2",
+      "atk": 0.0,
+      "dmg": [7, 14],
+      "crit": 0.07,
+      "spd": 7,
+      "upgradeRequirementCode": 1
+    },
+    {
+      "name": "AbigailWilliams_weapon_3",
+      "atk": 0.0,
+      "dmg": [8, 16],
+      "crit": 0.08,
+      "spd": 8,
+      "upgradeRequirementCode": 2
+    },
+    {
+      "name": "AbigailWilliams_weapon_4",
+      "atk": 0.0,
+      "dmg": [9, 18],
+      "crit": 0.09,
+      "spd": 9,
+      "upgradeRequirementCode": 3
+    }
+  ],
+  "armour": [
+    {
+      "name": "AbigailWilliams_armour_0",
+      "spd": 0,
+      "defence": 0.1,
+      "prot": 0.0,
+      "hp": 20
+    },
+    {
+      "name": "AbigailWilliams_armour_1",
+      "spd": 0,
+      "defence": 0.15,
+      "prot": 0.0,
+      "hp": 24,
+      "upgradeRequirementCode": 0
+    },
+    {
+      "name": "AbigailWilliams_armour_2",
+      "spd": 0,
+      "defence": 0.2,
+      "prot": 0.0,
+      "hp": 28,
+      "upgradeRequirementCode": 1
+    },
+    {
+      "name": "AbigailWilliams_armour_3",
+      "spd": 0,
+      "defence": 0.25,
+      "prot": 0.0,
+      "hp": 32,
+      "upgradeRequirementCode": 2
+    },
+    {
+      "name": "AbigailWilliams_armour_4",
+      "spd": 0,
+      "defence": 0.3,
+      "prot": 0.0,
+      "hp": 36,
+      "upgradeRequirementCode": 3
+    }
+  ],
+  "combat_skill": [
+    {
+      "id": "AbigailWilliams_Skill_1",
+      "level": 0,
+      "launch": "34",
+      "target": "~@1234",
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Dreamland_effects": ["AW_Skill_1_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_1",
+      "level": 1,
+      "launch": "34",
+      "target": "~@1234",
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Dreamland_effects": ["AW_Skill_1_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_1",
+      "level": 2,
+      "launch": "34",
+      "target": "~@1234",
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Dreamland_effects": ["AW_Skill_1_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_1",
+      "level": 3,
+      "launch": "34",
+      "target": "~@1234",
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Dreamland_effects": ["AW_Skill_1_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_1",
+      "level": 4,
+      "launch": "34",
+      "target": "~@1234",
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Dreamland_effects": ["AW_Skill_1_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_1",
+      "level": 0,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_S1_Girl_True_HealS_dotHeal_1",
+        "AW_S1_Girl_True_DamageBuff_1",
+        "AW_Audio_Skill_1_Girl_True",
+        "AW_Chant_Skill_1_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True1_LV1",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_1",
+      "level": 1,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_S1_Girl_True_HealS_dotHeal_2",
+        "AW_S1_Girl_True_DamageBuff_2",
+        "AW_Audio_Skill_1_Girl_True",
+        "AW_Chant_Skill_1_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True1_LV2",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_1",
+      "level": 2,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_S1_Girl_True_HealS_dotHeal_3",
+        "AW_S1_Girl_True_DamageBuff_3",
+        "AW_Audio_Skill_1_Girl_True",
+        "AW_Chant_Skill_1_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True1_LV3",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_1",
+      "level": 3,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_S1_Girl_True_HealS_dotHeal_4",
+        "AW_S1_Girl_True_DamageBuff_4",
+        "AW_Audio_Skill_1_Girl_True",
+        "AW_Chant_Skill_1_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True1_LV4",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_1",
+      "level": 4,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_S1_Girl_True_HealS_dotHeal_5",
+        "AW_S1_Girl_True_DamageBuff_5",
+        "AW_Audio_Skill_1_Girl_True",
+        "AW_Chant_Skill_1_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True1_LV5",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_2",
+      "level": 0,
+      "type": "ranged",
+      "atk": 0.95,
+      "dmg": -0.9,
+      "crit": 0.0,
+      "launch": "34",
+      "target": "~1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_2",
+      "level": 1,
+      "type": "ranged",
+      "atk": 1.0,
+      "dmg": -0.9,
+      "crit": 0.0,
+      "launch": "34",
+      "target": "~1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_2",
+      "level": 2,
+      "type": "ranged",
+      "atk": 1.05,
+      "dmg": -0.9,
+      "crit": 0.0,
+      "launch": "34",
+      "target": "~1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_2",
+      "level": 3,
+      "type": "ranged",
+      "atk": 1.1,
+      "dmg": -0.9,
+      "crit": 0.0,
+      "launch": "34",
+      "target": "~1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_2",
+      "level": 4,
+      "type": "ranged",
+      "atk": 1.2,
+      "dmg": -0.9,
+      "crit": 0.0,
+      "launch": "34",
+      "target": "~1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_2",
+      "level": 0,
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Girl_True_effects": [
+        "AW_Tituba_Ignore_Debuff_Resist_G2",
+        "AW_S2_Girl_True_ProtDebuff_1",
+        "AW_Tituba_Ignore_Debuff_Resist_G2_Neu"
+      ],
+      "AW_Dreamland_effects": ["AW_Skill_2_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_2",
+      "level": 1,
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Girl_True_effects": [
+        "AW_Tituba_Ignore_Debuff_Resist_G2",
+        "AW_S2_Girl_True_ProtDebuff_2",
+        "AW_Tituba_Ignore_Debuff_Resist_G2_Neu"
+      ],
+      "AW_Dreamland_effects": ["AW_Skill_2_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_2",
+      "level": 2,
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Girl_True_effects": [
+        "AW_Tituba_Ignore_Debuff_Resist_G2",
+        "AW_S2_Girl_True_ProtDebuff_3",
+        "AW_Tituba_Ignore_Debuff_Resist_G2_Neu"
+      ],
+      "AW_Dreamland_effects": ["AW_Skill_2_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_2",
+      "level": 3,
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Girl_True_effects": [
+        "AW_Tituba_Ignore_Debuff_Resist_G2",
+        "AW_S2_Girl_True_ProtDebuff_4",
+        "AW_Tituba_Ignore_Debuff_Resist_G2_Neu"
+      ],
+      "AW_Dreamland_effects": ["AW_Skill_2_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_2",
+      "level": 4,
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Girl_True_effects": [
+        "AW_Tituba_Ignore_Debuff_Resist_G2",
+        "AW_S2_Girl_True_ProtDebuff_5",
+        "AW_Tituba_Ignore_Debuff_Resist_G2_Neu"
+      ],
+      "AW_Dreamland_effects": ["AW_Skill_2_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_2",
+      "level": 0,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_Audio_Skill_2_Girl_True",
+        "AW_Chant_Skill_2_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True2_LV1",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_2",
+      "level": 1,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_Audio_Skill_2_Girl_True",
+        "AW_Chant_Skill_2_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True2_LV2",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_2",
+      "level": 2,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_Audio_Skill_2_Girl_True",
+        "AW_Chant_Skill_2_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True2_LV3",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_2",
+      "level": 3,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_Audio_Skill_2_Girl_True",
+        "AW_Chant_Skill_2_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True2_LV4",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_2",
+      "level": 4,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_Audio_Skill_2_Girl_True",
+        "AW_Chant_Skill_2_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True2_LV5",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_3",
+      "level": 0,
+      "type": "melee",
+      "atk": 1.1,
+      "dmg": -0.75,
+      "crit": 0.0,
+      "launch": "34",
+      "target": "1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_3",
+      "level": 1,
+      "type": "melee",
+      "atk": 1.15,
+      "dmg": -0.75,
+      "crit": 0.0,
+      "launch": "34",
+      "target": "1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_3",
+      "level": 2,
+      "type": "melee",
+      "atk": 1.2,
+      "dmg": -0.75,
+      "crit": 0.0,
+      "launch": "34",
+      "target": "1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_3",
+      "level": 3,
+      "type": "melee",
+      "atk": 1.25,
+      "dmg": -0.75,
+      "crit": 0.0,
+      "launch": "34",
+      "target": "1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_3",
+      "level": 4,
+      "type": "melee",
+      "atk": 1.3,
+      "dmg": -0.75,
+      "crit": 0.0,
+      "launch": "34",
+      "target": "1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_3",
+      "level": 0,
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Girl_True_effects": [
+        "AW_disable_fake_clearguard",
+        "AW_disable_fake_guard",
+        "AW_Tituba_Ignore_Debuff_Resist_G3",
+        "AW_S3_Girl_True_DamageDebuff1",
+        "AW_Tituba_Ignore_Debuff_Resist_G3_Neu"
+      ],
+      "AW_Dreamland_effects": ["AW_Skill_3_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_3",
+      "level": 1,
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Girl_True_effects": [
+        "AW_disable_fake_clearguard",
+        "AW_disable_fake_guard",
+        "AW_Tituba_Ignore_Debuff_Resist_G3",
+        "AW_S3_Girl_True_DamageDebuff2",
+        "AW_Tituba_Ignore_Debuff_Resist_G3_Neu"
+      ],
+      "AW_Dreamland_effects": ["AW_Skill_3_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_3",
+      "level": 2,
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Girl_True_effects": [
+        "AW_disable_fake_clearguard",
+        "AW_disable_fake_guard",
+        "AW_Tituba_Ignore_Debuff_Resist_G3",
+        "AW_S3_Girl_True_DamageDebuff3",
+        "AW_Tituba_Ignore_Debuff_Resist_G3_Neu"
+      ],
+      "AW_Dreamland_effects": ["AW_Skill_3_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_3",
+      "level": 3,
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Girl_True_effects": [
+        "AW_disable_fake_clearguard",
+        "AW_disable_fake_guard",
+        "AW_Tituba_Ignore_Debuff_Resist_G3",
+        "AW_S3_Girl_True_DamageDebuff4",
+        "AW_Tituba_Ignore_Debuff_Resist_G3_Neu"
+      ],
+      "AW_Dreamland_effects": ["AW_Skill_3_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_3",
+      "level": 4,
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Girl_True_effects": [
+        "AW_disable_fake_clearguard",
+        "AW_disable_fake_guard",
+        "AW_Tituba_Ignore_Debuff_Resist_G3",
+        "AW_S3_Girl_True_DamageDebuff5",
+        "AW_Tituba_Ignore_Debuff_Resist_G3_Neu"
+      ],
+      "AW_Dreamland_effects": ["AW_Skill_3_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_3",
+      "level": 0,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_S3_Girl_True_Glyph_ActorDotAttack1",
+        "AW_Audio_Skill_3_Girl_True",
+        "AW_Chant_Skill_3_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True3_LV1",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_3",
+      "level": 1,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_S3_Girl_True_Glyph_ActorDotAttack2",
+        "AW_Audio_Skill_3_Girl_True",
+        "AW_Chant_Skill_3_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True3_LV2",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_3",
+      "level": 2,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_S3_Girl_True_Glyph_ActorDotAttack3",
+        "AW_Audio_Skill_3_Girl_True",
+        "AW_Chant_Skill_3_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True3_LV3",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_3",
+      "level": 3,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_S3_Girl_True_Glyph_ActorDotAttack4",
+        "AW_Audio_Skill_3_Girl_True",
+        "AW_Chant_Skill_3_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True3_LV4",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_3",
+      "level": 4,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_S3_Girl_True_Glyph_ActorDotAttack5",
+        "AW_Audio_Skill_3_Girl_True",
+        "AW_Chant_Skill_3_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True3_LV5",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_4",
+      "level": 0,
+      "launch": "1234",
+      "target": "@1234",
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Dreamland_effects": ["AW_Skill_4_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_4",
+      "level": 1,
+      "launch": "1234",
+      "target": "@1234",
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Dreamland_effects": ["AW_Skill_4_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_4",
+      "level": 2,
+      "launch": "1234",
+      "target": "@1234",
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Dreamland_effects": ["AW_Skill_4_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_4",
+      "level": 3,
+      "launch": "1234",
+      "target": "@1234",
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Dreamland_effects": ["AW_Skill_4_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_4",
+      "level": 4,
+      "launch": "1234",
+      "target": "@1234",
+      "valid_modes": ["AW_Girl_True", "AW_Dreamland"],
+      "AW_Dreamland_effects": ["AW_Skill_4_Dreamland_Tooltip5"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_4",
+      "level": 0,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_S4_Girl_True_Heal1",
+        "AW_S4_Girl_True_Glyph_Quirk_and_Cure1",
+        "AW_Audio_Skill_4_Girl_True",
+        "AW_Chant_Skill_4_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True4_LV1",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_4",
+      "level": 1,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_S4_Girl_True_Heal2",
+        "AW_S4_Girl_True_Glyph_Quirk_and_Cure2",
+        "AW_Audio_Skill_4_Girl_True",
+        "AW_Chant_Skill_4_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True4_LV2",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_4",
+      "level": 2,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_S4_Girl_True_Heal3",
+        "AW_S4_Girl_True_Glyph_Quirk_and_Cure3",
+        "AW_Audio_Skill_4_Girl_True",
+        "AW_Chant_Skill_4_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True4_LV3",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_4",
+      "level": 3,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_S4_Girl_True_Heal4",
+        "AW_S4_Girl_True_Glyph_Quirk_and_Cure4",
+        "AW_Audio_Skill_4_Girl_True",
+        "AW_Chant_Skill_4_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True4_LV4",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_4",
+      "level": 4,
+      "valid_modes": ["AW_Girl_True"],
+      "AW_Girl_True_effects": [
+        "AW_S4_Girl_True_Heal5",
+        "AW_S4_Girl_True_Glyph_Quirk_and_Cure5",
+        "AW_Audio_Skill_4_Girl_True",
+        "AW_Chant_Skill_4_Girl_True",
+        "AW_Recharge_Noble_Phantasm_Girl_True4_LV5",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_HS1",
+      "level": 0,
+      "per_turn_limit": 1,
+      "is_continue_turn": true,
+      "launch": "1234",
+      "target": ""
+    },
+    {
+      "id": "AbigailWilliams_Skill_HS1",
+      "level": 0,
+      "valid_modes": ["AW_Girl_True2"],
+      "AW_Girl_True": [
+        "2",
+        "AW_HS_Cooldown",
+        "AW_Audio_Skill_HS1_Girl_True2",
+        "AW_switch_to_Girl_True_invisible",
+        "AW_switch_to_Girl_True2_invisible_queued",
+        "AW_SPD_Prevent_Queue_Jumping",
+        "AW_HS1_RestartRound"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_HS2",
+      "level": 0,
+      "per_turn_limit": 1,
+      "is_continue_turn": true,
+      "launch": "1234",
+      "target": "@1234",
+      "self_target_valid": true
+    },
+    {
+      "id": "AbigailWilliams_Skill_HS2",
+      "level": 0
+    },
+    {
+      "id": "AbigailWilliams_Skill_HS2",
+      "level": 0,
+      "valid_modes": ["AW_Girl_True2"],
+      "AW_Girl_True": [
+        "2",
+        "AW_HS_Cooldown",
+        "AW_Audio_Skill_HS2_Girl_True2",
+        "AW_switch_to_Girl_True_invisible",
+        "AW_switch_to_Girl_True2_invisible_queued",
+        "AW_SPD_Prevent_Queue_Jumping",
+        "AW_HS2_RestartRound"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_7",
+      "level": 0,
+      "launch": "1234",
+      "target": "~@1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_7",
+      "level": 0,
+      "valid_modes": ["AW_Girl_True2"],
+      "AW_Girl_True": [
+        "2",
+        "AW_Kadath_no_damage",
+        "AW_Audio_Skill_7_Girl_True2",
+        "AW_Chant_Skill_7_Girl_True2",
+        "AW_Kadath_Stress_Heal",
+        "AW_Summon_KE",
+        "AW_Recharge_Noble_Phantasm_Consume_queued"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 0,
+      "type": "ranged",
+      "atk": 0.95,
+      "dmg": 0.0,
+      "crit": 0.01,
+      "launch": "123",
+      "target": "234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 1,
+      "type": "ranged",
+      "atk": 1.0,
+      "dmg": 0.0,
+      "crit": 0.02,
+      "launch": "123",
+      "target": "234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 2,
+      "type": "ranged",
+      "atk": 1.05,
+      "dmg": 0.0,
+      "crit": 0.03,
+      "launch": "123",
+      "target": "234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 3,
+      "type": "ranged",
+      "atk": 1.1,
+      "dmg": 0.0,
+      "crit": 0.04,
+      "launch": "123",
+      "target": "234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 4,
+      "type": "ranged",
+      "atk": 1.2,
+      "dmg": 0.0,
+      "crit": 0.05,
+      "launch": "123",
+      "target": "234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 0,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 1,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 2,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 3,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 4,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 0,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_1_The_Witch",
+        "AW_Chant_Skill_1_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_1_Foreigner",
+        "AW_Chant_Skill_1_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 1,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_1_The_Witch",
+        "AW_Chant_Skill_1_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_1_Foreigner",
+        "AW_Chant_Skill_1_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 2,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_1_The_Witch",
+        "AW_Chant_Skill_1_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_1_Foreigner",
+        "AW_Chant_Skill_1_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 3,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_1_The_Witch",
+        "AW_Chant_Skill_1_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_1_Foreigner",
+        "AW_Chant_Skill_1_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 4,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_1_The_Witch",
+        "AW_Chant_Skill_1_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_1_Foreigner",
+        "AW_Chant_Skill_1_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": ["AW_SCASCT_Hero_1D3_X", "AW_SCASCT_Hero_1D3_Y"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 1,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": ["AW_SCASCT_Hero_1D3_X", "AW_SCASCT_Hero_1D3_Y"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 2,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_1D5_X",
+        "AW_SCASCT_Hero_1D5_Y",
+        "AW_SCASCT_Hero_1D5_Z"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 3,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_1D5_X",
+        "AW_SCASCT_Hero_1D5_Y",
+        "AW_SCASCT_Hero_1D5_Z"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 4,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_1D7_X",
+        "AW_SCASCT_Hero_1D7_Y",
+        "AW_SCASCT_Hero_1D7_Z",
+        "AW_SCASCT_Hero_1D7_V"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_1",
+        "AW_SCASCT_Summon_Lv1",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_1_Foreigner_Tooltip1",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 1,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_2",
+        "AW_SCASCT_Summon_Lv2",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_1_Foreigner_Tooltip2",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 2,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_2",
+        "AW_SCASCT_Summon_Lv3",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_1_Foreigner_Tooltip3",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 3,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_3",
+        "AW_SCASCT_Summon_Lv4",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_1_Foreigner_Tooltip4",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_1",
+      "level": 4,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_3",
+        "AW_SCASCT_Summon_Lv5",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_1_Foreigner_Tooltip5",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 0,
+      "type": "ranged",
+      "atk": 1.0,
+      "dmg": -0.9,
+      "crit": 0.0,
+      "launch": "12",
+      "target": "~1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 1,
+      "type": "ranged",
+      "atk": 1.05,
+      "dmg": -0.9,
+      "crit": 0.0,
+      "launch": "12",
+      "target": "~1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 2,
+      "type": "ranged",
+      "atk": 1.1,
+      "dmg": -0.9,
+      "crit": 0.0,
+      "launch": "12",
+      "target": "~1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 3,
+      "type": "ranged",
+      "atk": 1.15,
+      "dmg": -0.9,
+      "crit": 0.0,
+      "launch": "12",
+      "target": "~1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 4,
+      "type": "ranged",
+      "atk": 1.2,
+      "dmg": -0.9,
+      "crit": 0.0,
+      "launch": "12",
+      "target": "~1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 0,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 1,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 2,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 3,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 4,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 0
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 1
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 2
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 3
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 4
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 0,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_2_The_Witch",
+        "AW_Chant_Skill_2_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_2_Foreigner",
+        "AW_Chant_Skill_2_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 1,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_2_The_Witch",
+        "AW_Chant_Skill_2_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_2_Foreigner",
+        "AW_Chant_Skill_2_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 2,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_2_The_Witch",
+        "AW_Chant_Skill_2_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_2_Foreigner",
+        "AW_Chant_Skill_2_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 3,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_2_The_Witch",
+        "AW_Chant_Skill_2_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_2_Foreigner",
+        "AW_Chant_Skill_2_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 4,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_2_The_Witch",
+        "AW_Chant_Skill_2_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_2_Foreigner",
+        "AW_Chant_Skill_2_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": ["AW_SCASCT_Hero_1D3_X", "AW_SCASCT_Hero_1D3_Y"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 1,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": ["AW_SCASCT_Hero_1D3_X", "AW_SCASCT_Hero_1D3_Y"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 2,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_1D5_X",
+        "AW_SCASCT_Hero_1D5_Y",
+        "AW_SCASCT_Hero_1D5_Z"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 3,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_1D5_X",
+        "AW_SCASCT_Hero_1D5_Y",
+        "AW_SCASCT_Hero_1D5_Z"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 4,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_1D7_X",
+        "AW_SCASCT_Hero_1D7_Y",
+        "AW_SCASCT_Hero_1D7_Z",
+        "AW_SCASCT_Hero_1D7_V"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_1",
+        "AW_SCASCT_Summon_Lv1",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_2_Foreigner_Tooltip1",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 1,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_2",
+        "AW_SCASCT_Summon_Lv2",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_2_Foreigner_Tooltip2",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 2,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_2",
+        "AW_SCASCT_Summon_Lv3",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_2_Foreigner_Tooltip3",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 3,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_3",
+        "AW_SCASCT_Summon_Lv4",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_2_Foreigner_Tooltip4",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_2",
+      "level": 4,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_3",
+        "AW_SCASCT_Summon_Lv5",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_2_Foreigner_Tooltip5",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 0,
+      "type": "ranged",
+      "atk": 0.95,
+      "dmg": 0.0,
+      "crit": 0.01,
+      "launch": "12",
+      "target": "1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 1,
+      "type": "ranged",
+      "atk": 1.0,
+      "dmg": 0.0,
+      "crit": 0.02,
+      "launch": "12",
+      "target": "1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 2,
+      "type": "ranged",
+      "atk": 1.05,
+      "dmg": 0.0,
+      "crit": 0.03,
+      "launch": "12",
+      "target": "1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 3,
+      "type": "ranged",
+      "atk": 1.1,
+      "dmg": 0.0,
+      "crit": 0.04,
+      "launch": "12",
+      "target": "1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 4,
+      "type": "ranged",
+      "atk": 1.2,
+      "dmg": 0.0,
+      "crit": 0.05,
+      "launch": "12",
+      "target": "1234"
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 0,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 1,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 2,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 3,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 4,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 0,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_3_The_Witch",
+        "AW_Chant_Skill_3_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_3_Foreigner",
+        "AW_Chant_Skill_3_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 1,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_3_The_Witch",
+        "AW_Chant_Skill_3_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_3_Foreigner",
+        "AW_Chant_Skill_3_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 2,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_3_The_Witch",
+        "AW_Chant_Skill_3_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_3_Foreigner",
+        "AW_Chant_Skill_3_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 3,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_3_The_Witch",
+        "AW_Chant_Skill_3_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_3_Foreigner",
+        "AW_Chant_Skill_3_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 4,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_3_The_Witch",
+        "AW_Chant_Skill_3_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_3_Foreigner",
+        "AW_Chant_Skill_3_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": ["AW_SCASCT_Hero_1D3_X", "AW_SCASCT_Hero_1D3_Y"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 1,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": ["AW_SCASCT_Hero_1D3_X", "AW_SCASCT_Hero_1D3_Y"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 2,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_1D5_X",
+        "AW_SCASCT_Hero_1D5_Y",
+        "AW_SCASCT_Hero_1D5_Z"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 3,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_1D5_X",
+        "AW_SCASCT_Hero_1D5_Y",
+        "AW_SCASCT_Hero_1D5_Z"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 4,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_1D7_X",
+        "AW_SCASCT_Hero_1D7_Y",
+        "AW_SCASCT_Hero_1D7_Z",
+        "AW_SCASCT_Hero_1D7_V"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_1",
+        "AW_SCASCT_Summon_Lv1",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_3_Foreigner_Tooltip1",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 1,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_2",
+        "AW_SCASCT_Summon_Lv2",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_3_Foreigner_Tooltip2",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 2,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_2",
+        "AW_SCASCT_Summon_Lv3",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_3_Foreigner_Tooltip3",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 3,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_3",
+        "AW_SCASCT_Summon_Lv4",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_3_Foreigner_Tooltip4",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_3",
+      "level": 4,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_3",
+        "AW_SCASCT_Summon_Lv5",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_3_Foreigner_Tooltip5",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 0,
+      "launch": "1234",
+      "target": ""
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 1,
+      "launch": "1234",
+      "target": ""
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 2,
+      "launch": "1234",
+      "target": ""
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 3,
+      "launch": "1234",
+      "target": ""
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 4,
+      "launch": "1234",
+      "target": ""
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 0,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_4_The_Witch",
+        "AW_Chant_Skill_4_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_4_Foreigner",
+        "AW_Chant_Skill_4_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 1,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_4_The_Witch",
+        "AW_Chant_Skill_4_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_4_Foreigner",
+        "AW_Chant_Skill_4_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 2,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_4_The_Witch",
+        "AW_Chant_Skill_4_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_4_Foreigner",
+        "AW_Chant_Skill_4_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 3,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_4_The_Witch",
+        "AW_Chant_Skill_4_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_4_Foreigner",
+        "AW_Chant_Skill_4_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 4,
+      "valid_modes": ["AW_The_Witch", "AW_Foreigner"],
+      "AW_The_Witch_effects": [
+        "AW_Audio_Skill_4_The_Witch",
+        "AW_Chant_Skill_4_The_Witch",
+        "AW_switch_to_The_Witch_return"
+      ],
+      "AW_Foreigner_effects": [
+        "AW_Audio_Skill_4_Foreigner",
+        "AW_Chant_Skill_4_Foreigner",
+        "AW_switch_to_Foreigner_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": ["AW_SCASCT_Hero_1D3_X", "AW_SCASCT_Hero_1D3_Y"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 1,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": ["AW_SCASCT_Hero_1D3_X", "AW_SCASCT_Hero_1D3_Y"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 2,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_1D5_X",
+        "AW_SCASCT_Hero_1D5_Y",
+        "AW_SCASCT_Hero_1D5_Z"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 3,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_1D5_X",
+        "AW_SCASCT_Hero_1D5_Y",
+        "AW_SCASCT_Hero_1D5_Z"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 4,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_1D7_X",
+        "AW_SCASCT_Hero_1D7_Y",
+        "AW_SCASCT_Hero_1D7_Z",
+        "AW_SCASCT_Hero_1D7_V"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_1",
+        "AW_SCASCT_Summon_Lv1",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_4_Foreigner_Tooltip1",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 1,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_2",
+        "AW_SCASCT_Summon_Lv2",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_4_Foreigner_Tooltip2",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 2,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_2",
+        "AW_SCASCT_Summon_Lv3",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_4_Foreigner_Tooltip3",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 3,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_3",
+        "AW_SCASCT_Summon_Lv4",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_4_Foreigner_Tooltip4",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_Witch_4",
+      "level": 4,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_Always_3",
+        "AW_SCASCT_Summon_Lv5",
+        "AW_Qliphoth_Aura_Of_Madness",
+        "AW_Skill_4_Foreigner_Tooltip5",
+        "AW_Qliphoth_Aura_Passive_Tooltip"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_PET1",
+      "level": 0,
+      "per_turn_limit": 1,
+      "is_continue_turn": true,
+      "launch": "1234",
+      "target": ""
+    },
+    {
+      "id": "AbigailWilliams_Skill_PET1",
+      "level": 0,
+      "valid_modes": ["AW_The_Witch2", "AW_Foreigner2"],
+      "AW_The_Witch": ["2", "AW_PET_RestartRound_The_Witch2_instant"],
+      "AW_Foreigner": ["2", "AW_PET_RestartRound_Foreigner2_instant"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_PET2",
+      "level": 0,
+      "per_turn_limit": 1,
+      "is_continue_turn": true,
+      "launch": "1234",
+      "target": ""
+    },
+    {
+      "id": "AbigailWilliams_Skill_PET2",
+      "level": 0,
+      "valid_modes": ["AW_The_Witch2", "AW_Foreigner2"],
+      "AW_The_Witch": ["2", "AW_PET_RestartRound_The_Witch2_instant"],
+      "AW_Foreigner": ["2", "AW_PET_RestartRound_Foreigner2_instant"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_7x",
+      "level": 0,
+      "type": "ranged",
+      "atk": 9.99,
+      "dmg": 1.0,
+      "crit": 0.0,
+      "launch": "1234",
+      "target": "1234",
+      "ignore_stealth": true,
+      "ignore_guard": true,
+      "can_miss": false,
+      "can_be_riposted": false
+    },
+    {
+      "id": "AbigailWilliams_Skill_7x",
+      "level": 0,
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_7x",
+      "level": 0
+    },
+    {
+      "id": "AbigailWilliams_Skill_7x",
+      "level": 0,
+      "valid_modes": ["AW_The_Witch2"],
+      "AW_The_Witch": [
+        "2",
+        "AW_Audio_Skill_7_The_Witch2",
+        "AW_Chant_Skill_7_The_Witch2",
+        "AW_Qliphoth_Self_Immunity_Temporary",
+        "AW_Qliphoth_no_damage_heal_if_Witch"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_7x",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner2"],
+      "AW_Foreigner": [
+        "2",
+        "AW_Audio_Skill_7_Foreigner2",
+        "AW_Chant_Skill_7_Foreigner2"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_6",
+      "level": 0,
+      "launch": "",
+      "target": "~",
+      "is_crit_valid": false,
+      "valid_modes": ["AW_Girl_True2"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_6",
+      "level": 1,
+      "launch": "",
+      "target": "~",
+      "is_crit_valid": false,
+      "valid_modes": ["AW_Girl_True2"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_6",
+      "level": 2,
+      "launch": "",
+      "target": "~",
+      "is_crit_valid": false,
+      "valid_modes": ["AW_Girl_True2"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_6",
+      "level": 3,
+      "launch": "",
+      "target": "~",
+      "is_crit_valid": false,
+      "valid_modes": ["AW_Girl_True2"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_6",
+      "level": 4,
+      "launch": "1234",
+      "target": "",
+      "is_crit_valid": false,
+      "valid_modes": ["AW_Girl_True2"],
+      "AW_Girl_True": [
+        "2",
+        "AW_Audio_Skill_6_Girl_True2",
+        "AW_switch_to_Girl_True_return"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_6",
+      "level": 4
+    },
+    {
+      "id": "AbigailWilliams_Skill_6x",
+      "level": 0,
+      "type": "teleport",
+      "atk": 9.99,
+      "dmg": -1.0,
+      "crit": -1.0,
+      "launch": "",
+      "target": "~",
+      "valid_modes": ["AW_The_Witch2", "AW_Foreigner2"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_6x",
+      "level": 1,
+      "type": "teleport",
+      "atk": 9.99,
+      "dmg": -1.0,
+      "crit": -1.0,
+      "launch": "",
+      "target": "~",
+      "valid_modes": ["AW_The_Witch2", "AW_Foreigner2"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_6x",
+      "level": 2,
+      "type": "teleport",
+      "atk": 9.99,
+      "dmg": -1.0,
+      "crit": -1.0,
+      "launch": "",
+      "target": "~",
+      "valid_modes": ["AW_The_Witch2", "AW_Foreigner2"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_6x",
+      "level": 3,
+      "type": "teleport",
+      "atk": 9.99,
+      "dmg": -1.0,
+      "crit": -1.0,
+      "launch": "",
+      "target": "~",
+      "valid_modes": ["AW_The_Witch2", "AW_Foreigner2"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_6x",
+      "level": 4,
+      "type": "teleport",
+      "atk": 9.99,
+      "dmg": -1.0,
+      "crit": -1.0,
+      "launch": "1234",
+      "target": "~1234",
+      "valid_modes": ["AW_The_Witch2", "AW_Foreigner2"],
+      "ignore_stealth": true,
+      "ignore_guard": true,
+      "can_miss": false,
+      "can_be_riposted": false
+    },
+    {
+      "id": "AbigailWilliams_Skill_6x",
+      "level": 4,
+      "valid_modes": ["AW_The_Witch2", "AW_Foreigner2"],
+      "AW_The_Witch": ["2", "AW_Audio_Skill_6_The_Witch2"],
+      "AW_Foreigner": ["2", "AW_Audio_Skill_6_Foreigner2"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_SW",
+      "level": 0,
+      "per_turn_limit": 5,
+      "is_continue_turn": true,
+      "launch": "1234",
+      "valid_modes": ["AW_Girl_True2", "AW_The_Witch2", "AW_Foreigner2"],
+      "AW_Girl_True": ["2", "AW_switch_to_The_Witch_invisible"],
+      "AW_The_Witch": ["2", "AW_switch_to_Girl_True_invisible"],
+      "AW_Foreigner": ["2", "AW_switch_to_The_Witch_invisible"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_SW",
+      "level": 0,
+      "valid_modes": ["AW_Girl_True2"],
+      "AW_Girl_True": [
+        "2",
+        "AW_Audio_Skill_SW_Girl_True2",
+        "AW_LBS_Pre",
+        "AW_Kill_Kadath_Shadow_Enemy",
+        "AW_Ascension_Pull",
+        "AW_disable_fake_clearguard",
+        "AW_disable_fake_guard"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_SW",
+      "level": 0,
+      "valid_modes": ["AW_Girl_True2"],
+      "AW_Girl_True": [
+        "2",
+        "AW_LBS_0X",
+        "AW_LBS_1X",
+        "AW_LBS_2X",
+        "AW_LBS_3X",
+        "AW_LBS_4X",
+        "AW_LBS_5X_ON"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_SW",
+      "level": 0,
+      "valid_modes": ["AW_The_Witch2"],
+      "AW_The_Witch": [
+        "2",
+        "AW_Audio_Skill_SW_The_Witch2",
+        "AW_LBS_Pre",
+        "AW_Swami_Chandraputra_clear_guarding",
+        "AW_Ascension_Push",
+        "AW_disable_fake_clearguard",
+        "AW_disable_fake_guard"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_SW",
+      "level": 0,
+      "valid_modes": ["AW_The_Witch2"],
+      "AW_The_Witch": [
+        "2",
+        "AW_LBS_0X",
+        "AW_LBS_1X",
+        "AW_LBS_2X",
+        "AW_LBS_3X",
+        "AW_LBS_4X",
+        "AW_LBS_5X_OFF"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_SW",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner2"],
+      "AW_Foreigner": [
+        "2",
+        "AW_Audio_Skill_SW_Foreigner2",
+        "AW_LBS_Pre",
+        "AW_Recharge_Noble_Phantasm_Consume",
+        "AW_Exit_Foreigner_Item_Matryoshka"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_SW",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner2"],
+      "AW_Foreigner": [
+        "2",
+        "AW_Qliphoth_Bsrc_Never_Again_Dispel_0th",
+        "AW_Qliphoth_Bsrc_Never_Again_Steal_Heroes",
+        "AW_Qliphoth_Bsrc_Never_Again_Dispel_1st",
+        "AW_Qliphoth_Bsrc_Never_Again_Steal_Monsters",
+        "AW_Qliphoth_Bsrc_Never_Again_Dispel_2nd"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Move",
+      "level": 0,
+      "type": "move",
+      "move": [1, 1],
+      "per_turn_limit": 1,
+      "launch": "1234",
+      "valid_modes": [
+        "AW_Girl_Fake",
+        "AW_Girl_True",
+        "AW_Dreamland",
+        "AW_The_Witch"
+      ],
+      "AW_Girl_Fake_effects": ["AW_Skill_Move_Shared_Tooltip"],
+      "AW_Dreamland_effects": [
+        "AW_disable_fake_tag",
+        "AW_switch_to_Girl_True_invisible_queued"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Move",
+      "level": 1,
+      "type": "move",
+      "move": [2, 2],
+      "per_turn_limit": 1,
+      "launch": "1234",
+      "valid_modes": [
+        "AW_Girl_Fake",
+        "AW_Girl_True",
+        "AW_Dreamland",
+        "AW_The_Witch"
+      ],
+      "AW_Girl_Fake_effects": ["AW_Skill_Move_Shared_Tooltip"],
+      "AW_Dreamland_effects": [
+        "AW_disable_fake_tag",
+        "AW_switch_to_Girl_True_invisible_queued"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Move",
+      "level": 2,
+      "type": "move",
+      "move": [3, 3],
+      "per_turn_limit": 1,
+      "launch": "1234",
+      "valid_modes": [
+        "AW_Girl_Fake",
+        "AW_Girl_True",
+        "AW_Dreamland",
+        "AW_The_Witch"
+      ],
+      "AW_Girl_Fake_effects": ["AW_Skill_Move_Shared_Tooltip"],
+      "AW_Dreamland_effects": [
+        "AW_disable_fake_tag",
+        "AW_switch_to_Girl_True_invisible_queued"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Move",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_switch_to_The_Witch_Move_Skill_Hidden",
+        "AW_Qliphoth_Bsrc_Never_Again_Dispel_0th",
+        "AW_Qliphoth_Bsrc_Never_Again_Steal_Heroes",
+        "AW_Qliphoth_Bsrc_Never_Again_Dispel_1st",
+        "AW_Qliphoth_Bsrc_Never_Again_Steal_Monsters",
+        "AW_Qliphoth_Bsrc_Never_Again_Dispel_2nd"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Move",
+      "level": 1,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_switch_to_The_Witch_Move_Skill_Hidden",
+        "AW_Qliphoth_Bsrc_Never_Again_Dispel_0th",
+        "AW_Qliphoth_Bsrc_Never_Again_Steal_Heroes",
+        "AW_Qliphoth_Bsrc_Never_Again_Dispel_1st",
+        "AW_Qliphoth_Bsrc_Never_Again_Steal_Monsters",
+        "AW_Qliphoth_Bsrc_Never_Again_Dispel_2nd"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Move",
+      "level": 2,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_switch_to_The_Witch_Move_Skill_Hidden",
+        "AW_Qliphoth_Bsrc_Never_Again_Dispel_0th",
+        "AW_Qliphoth_Bsrc_Never_Again_Steal_Heroes",
+        "AW_Qliphoth_Bsrc_Never_Again_Dispel_1st",
+        "AW_Qliphoth_Bsrc_Never_Again_Steal_Monsters",
+        "AW_Qliphoth_Bsrc_Never_Again_Dispel_2nd"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Passive_4",
+      "level": 0,
+      "launch": "",
+      "target": "~",
+      "valid_modes": []
+    },
+    {
+      "id": "AbigailWilliams_Passive_5",
+      "level": 0,
+      "launch": "",
+      "target": "~",
+      "valid_modes": []
+    },
+    {
+      "id": "AbigailWilliams_Passive_OC",
+      "level": 0,
+      "launch": "",
+      "target": "~",
+      "valid_modes": []
+    }
+  ],
+  "riposte_skill": [
+    {
+      "id": "AbigailWilliams_riposte",
+      "level": 0,
+      "type": "ranged",
+      "atk": 1.0,
+      "dmg": 0.0,
+      "crit": 0.0,
+      "launch": "1234",
+      "target": "1234",
+      "damage_heal_base_class_ids": ["AbigailWilliams"]
+    },
+    {
+      "id": "AbigailWilliams_riposte",
+      "level": 0,
+      "valid_modes": [
+        "AW_Girl_Fake",
+        "AW_Girl_True",
+        "AW_Girl_True2",
+        "AW_Dreamland"
+      ],
+      "AW_Girl_Fake_effects": ["AW_Chant_Skill_R_Girl_Fake"],
+      "AW_Girl_True_effects": [
+        "AW_switch_to_Girl_True2",
+        "AW_Chant_Skill_R_Girl_True"
+      ],
+      "AW_Girl_True": [
+        "2",
+        "AW_switch_to_Girl_True",
+        "AW_Chant_Skill_R_Girl_True2"
+      ],
+      "AW_Dreamland_effects": ["AW_Chant_Skill_R_Dreamland"]
+    },
+    {
+      "id": "AbigailWilliams_riposte",
+      "level": 0,
+      "valid_modes": ["AW_The_Witch", "AW_The_Witch2"],
+      "AW_The_Witch_effects": [
+        "AW_switch_to_The_Witch2",
+        "AW_Chant_Skill_R_The_Witch"
+      ],
+      "AW_The_Witch": [
+        "2",
+        "AW_switch_to_The_Witch",
+        "AW_Chant_Skill_R_The_Witch2"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_riposte",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner", "AW_Foreigner2"],
+      "AW_Foreigner_effects": [
+        "AW_switch_to_Foreigner2",
+        "AW_Chant_Skill_R_Foreigner"
+      ],
+      "AW_Foreigner": [
+        "2",
+        "AW_switch_to_Foreigner",
+        "AW_Chant_Skill_R_Foreigner2"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_riposte",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_SCASCT_Hero_1D3_X",
+        "AW_SCASCT_Hero_1D3_Y",
+        "AW_SCASCT_Hero_Always_1",
+        "AW_SCASCT_Summon_Lv1"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_riposte",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner"],
+      "AW_Foreigner_effects": [
+        "AW_Afogomorn_Riposte_On_Kill_Dead",
+        "AW_Afogomorn_Riposte_On_Kill_Alive",
+        "AW_Afogomorn_Riposte_Summon_Checker"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_riposte",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner2"],
+      "AW_Foreigner": [
+        "2",
+        "AW_SCASCT_Hero_1D3_X",
+        "AW_SCASCT_Hero_1D3_Y",
+        "AW_SCASCT_Hero_Always_1",
+        "AW_SCASCT_Summon_Lv1"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_riposte",
+      "level": 0,
+      "valid_modes": ["AW_Foreigner2"],
+      "AW_Foreigner": [
+        "2",
+        "AW_Afogomorn_Riposte_On_Kill_Dead",
+        "AW_Afogomorn_Riposte_On_Kill_Alive",
+        "AW_Afogomorn_Riposte_Summon_Checker"
+      ]
+    }
+  ],
+  "combat_move_skill": [
+    {
+      "id": "AbigailWilliams_Skill_0",
+      "level": 0,
+      "per_turn_limit": 1,
+      "is_continue_turn": true,
+      "launch": "1234",
+      "target": ""
+    },
+    {
+      "id": "AbigailWilliams_Skill_0",
+      "level": 0,
+      "valid_modes": ["AW_Dreamland"],
+      "AW_Dreamland_effects": [
+        "AW_switch_to_Girl_True_invisible_queued",
+        "AW_disable_fake_tag"
+      ]
+    },
+    {
+      "id": "AbigailWilliams_Skill_0",
+      "level": 0,
+      "valid_modes": ["AW_Girl_Fake", "AW_Girl_True", "AW_Girl_True2"],
+      "AW_Girl_Fake_effects": [
+        "AW_permanent_passive_foreigner1_instant",
+        "AW_permanent_passive_foreigner2_instant",
+        "AW_permanent_passive_bond_level_instant",
+        "AW_switch_to_Girl_True_item_instant"
+      ],
+      "AW_Girl_True_effects": ["AW_switch_to_Girl_True2_item_instant"],
+      "AW_Girl_True": ["2", "AW_switch_to_Girl_True_item_instant"]
+    },
+    {
+      "id": "AbigailWilliams_Skill_0",
+      "level": 0,
+      "valid_modes": [
+        "AW_The_Witch",
+        "AW_The_Witch2",
+        "AW_Foreigner",
+        "AW_Foreigner2"
+      ],
+      "AW_The_Witch_effects": ["AW_switch_to_The_Witch2_item_instant"],
+      "AW_The_Witch": ["2", "AW_switch_to_The_Witch_item_instant"],
+      "AW_Foreigner_effects": ["AW_switch_to_Foreigner2_item_instant"],
+      "AW_Foreigner": ["2", "AW_switch_to_Foreigner_item_instant"]
+    }
+  ],
+  "tag": [
+    {
+      "id": "light"
+    },
+    {
+      "id": "religious"
+    },
+    {
+      "id": "outsiders_bonfire"
+    }
+  ],
+  "mode": [
+    {
+      "id": "AW_Girl_Fake",
+      "is_raid_default": true
+    },
+    {
+      "id": "AW_Girl_True",
+      "is_raid_default": true
+    },
+    {
+      "id": "AW_Girl_True2",
+      "is_raid_default": true
+    },
+    {
+      "id": "AW_Dreamland",
+      "is_raid_default": true,
+      "is_targetable": false
+    },
+    {
+      "id": "AW_The_Witch",
+      "is_raid_default": true
+    },
+    {
+      "id": "AW_The_Witch2",
+      "is_raid_default": true
+    },
+    {
+      "id": "AW_Foreigner",
+      "is_raid_default": true
+    },
+    {
+      "id": "AW_Foreigner2",
+      "is_raid_default": true
+    }
+  ],
+  "overstressed_modifier": [
+    {
+      "override_trait_type_chances": [0.5, 0.5]
+    }
+  ],
+  "quirk_modifier": [
+    {
+      "incompatible_class_ids": [
+        "disease_vampire_passive",
+        "disease_vampire_crave",
+        "disease_vampire_blood_lust",
+        "disease_vampire_wasting",
+        "AW_Pancake_Cthulhu"
+      ]
+    },
+    {
+      "incompatible_class_ids": [
+        "unquiet_mind",
+        "god_fearing",
+        "witness",
+        "flagellant",
+        "faithless",
+        "alcoholism",
+        "resolution",
+        "known_cheat",
+        "love_interest",
+        "deviant_tastes"
+      ]
+    }
+  ],
+  "activity_modifier": [
+    {
+      "override_valid_activity_ids": [
+        "meditation",
+        "prayer",
+        "treatment",
+        "disease_treatment"
+      ]
+    }
+  ],
+  "incompatible_party_member": [
+    {
+      "id": "AbigailWilliams_limit",
+      "hero_tag": "AbigailWilliams"
+    }
+  ],
+  "deaths_door": [{}, {}],
+  "hp_reaction": [
+    {
+      "hp_ratio": 0.99,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.95,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.9,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.85,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.8,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.75,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.7,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.65,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.6,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.55,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.5,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.45,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.4,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.35,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.3,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.25,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.2,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.15,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.1,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.05,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.01,
+      "is_under": true
+    },
+    {
+      "hp_ratio": 0.95,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.9,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.85,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.8,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.75,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.7,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.65,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.6,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.55,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.5,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.45,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.4,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.35,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.3,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.25,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.2,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.15,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.1,
+      "is_under": false
+    },
+    {
+      "hp_ratio": 0.05,
+      "is_under": false
+    }
+  ],
+  "death_reaction": [
+    {
+      "target_allies": true
+    },
+    {
+      "target_enemies": true
+    }
+  ],
+  "controlled": [
+    {
+      "target_rank": 4
+    }
+  ],
+  "id_index": {
+    "index": 169202
+  },
+  "extra_battle_loot": [
+    {
+      "count": 1
+    }
+  ],
+  "extra_curio_loot": [
+    {
+      "count": 1
+    }
+  ],
+  "skill_selection": [
+    {
+      "can_select_combat_skills": false,
+      "number_of_selected_combat_skills_max": 21
+    }
+  ],
+  "generation": [
+    {
+      "is_generation_enabled": true,
+      "number_of_positive_quirks_min": 0,
+      "number_of_positive_quirks_max": 0,
+      "number_of_negative_quirks_min": 0,
+      "number_of_negative_quirks_max": 0,
+      "number_of_class_specific_camping_skills": 0,
+      "number_of_shared_camping_skills": 0,
+      "number_of_random_combat_skills": 21,
+      "number_of_cards_in_deck": 6,
+      "card_chance": 1.0
+    }
+  ]
+}
