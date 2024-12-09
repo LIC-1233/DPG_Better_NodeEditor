@@ -1,4 +1,3 @@
-from collections import defaultdict
 from contextlib import contextmanager
 from typing import Any, Callable
 
@@ -38,16 +37,18 @@ class NodeEditor:
         self.node_editor_instance: int
         self.node_list = []
         self.node_attr_list = []
-        self.node_attr_map: BiDirectionalDict = BiDirectionalDict()
+        self.node_attr_map: BiDirectionalDict[int | str] = BiDirectionalDict()
         self.link_list = []
-        self.link_chain: BiDirectionalDict = BiDirectionalDict()
+        self.link_chain: BiDirectionalDict[int | str] = BiDirectionalDict()
 
     def _on_click_global(self):
         # 节点属性右键菜单
         for node_attribute in self.node_attr_list:
             for node_attribute_item in dpg.get_item_children(node_attribute, slot=1):  # type: ignore
                 if dpg.get_item_state(node_attribute_item).get("hovered"):
-                    self.node_attribute_popup(self.node_attr_map.forward_map, node_attribute)
+                    self.node_attribute_popup(
+                        self.node_attr_map.forward_map, node_attribute
+                    )
                     return
 
         # 节点右键菜单
@@ -132,7 +133,6 @@ class NodeEditor:
 
     # 链接节点
     def link_attr(self, sender: int | str, app_data: tuple[int | str, int | str]):
-
         if not self.check_link(app_data[0], app_data[1]):
             return
 
@@ -152,7 +152,7 @@ class NodeEditor:
         # app_data -> link_id
         self.delete_item(app_data)
         self.link_list.remove(app_data)
-        in_attr, out_attr = dpg.get_item_user_data(app_data) # type: ignore
+        in_attr, out_attr = dpg.get_item_user_data(app_data)  # type: ignore
         self.link_chain.remove(in_attr, out_attr)
 
     def get_link_id(self, attr_id: int | str) -> list[int | str]:
@@ -162,22 +162,57 @@ class NodeEditor:
             if attr_id in dpg.get_item_user_data(link)[0]  # type: ignore
         ]
 
-    def auto_layout(self, sender: int | str, node_id: int | str,hgap:int=50,vgap:int=100):
-        init_pos = dpg.get_item_pos(node_id)
-        sub_nodes:list[list[int | str]] = []
-        
-        
-        while
-        for node_attr in self.node_attr_map[node_id]:
+    def gen_node_network(self, node_id: int | str | None = None):
+        in_out_node_maps: BiDirectionalDict[int | str] = BiDirectionalDict()
+        for in_attr, out_attr in self.link_chain:
+            for in_node in self.node_attr_map.get_keys_by_value(in_attr):
+                for out_node in self.node_attr_map.get_keys_by_value(out_attr):
+                    in_out_node_maps.add(in_node, out_node)
 
-            for index,sub_attr in self.link_chain[node_attr]:
-                for node,attrs in self.node_attr_map.items():
-                    sub_node = None
-                    if sub_attr in attrs:
-                        sub_node = node
-                        break
-                    if not sub_node:
-                        continue
+        if node_id:
+            root_nodes = {node_id}
+        else:
+            root_nodes = set(in_out_node_maps.keys()) - set(in_out_node_maps.values())
+
+        nodes_level: list[list[int | str]] = [list(root_nodes)]
+        result: list[list[int | str]] = [list(root_nodes)]
+        while nodes_level:
+            nodes = nodes_level.pop(0)
+            sub_nodes: set[int | str] = set()
+            for root_node in nodes:
+                sub_nodes |= set(in_out_node_maps.get_values_by_key(root_node))
+            if sub_nodes:
+                nodes_level.append(list(sub_nodes))
+                result.append(list(sub_nodes))
+
+        return result
+
+    def auto_layout(
+        self, node_id: int | str | None = None, hgap: int = 150, vgap: int = 20
+    ):
+        nodes_level = self.gen_node_network(node_id)
+        pos: dpg.List[int] = dpg.get_item_pos(nodes_level[0][0])
+
+        offset = 0
+        while nodes_level:
+            nodes = nodes_level.pop(0)
+            max_width = 0
+            last_item_bottom = 0
+            for index, node in enumerate(nodes):
+                max_width = max(max_width, dpg.get_item_rect_size(node)[0])
+                dpg.set_item_pos(
+                    node,
+                    (
+                        pos[0] - offset - dpg.get_item_rect_size(node)[0] - hgap,  # type: ignore
+                        pos[1] + last_item_bottom,
+                    ),
+                )
+                last_item_bottom += dpg.get_item_rect_size(node)[1] + vgap
+                if index == 15:
+                    a = list(nodes[15:])
+                    nodes_level = [a] + nodes_level
+                    break
+            offset += max_width
 
     @contextmanager  # type: ignore
     def node_editor(

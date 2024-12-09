@@ -15,13 +15,15 @@ class NodeEditorPopup:
         self.node_editor = node_editor
 
     # 编辑器右键菜单
-    @staticmethod
-    def node_editor_pop_wnd(node_atr_map: dict[int | str, list[int | str]]) -> Any:
+    def node_editor_pop_wnd(
+        self, node_atr_map: dict[int | str, list[int | str]]
+    ) -> Any:
         with dpg.window(popup=True, min_size=(0, 0)) as nodeditor_popup_wnd:
             with dpg.menu(label="node_editor"):
-                for category in ["node_type_category_1", "node_type_category_2"]:
-                    dpg.add_menu_item(label=category)
-                    dpg.add_separator()
+                dpg.add_menu_item(
+                    label="auto layout", callback=lambda: self.node_editor.auto_layout()
+                )
+                dpg.add_separator()
         return nodeditor_popup_wnd
 
     # 节点右键菜单

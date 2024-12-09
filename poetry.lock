@@ -11,6 +11,11 @@ files = [
     {file = "annotated_types-0.7.0.tar.gz", hash = "sha256:aff07c09a53a08bc8cfccb9c85b05f1aa9a2a6f23728d790723543408344ce89"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+reference = "mirrors"
+
 [[package]]
 name = "babel"
 version = "2.16.0"
@@ -24,6 +29,11 @@ files = [
 
 [package.extras]
 dev = ["freezegun (>=1.0,<2.0)", "pytest (>=6.0)", "pytest-cov"]
+
+[package.source]
+type = "legacy"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+reference = "mirrors"
 
 [[package]]
 name = "dearpygui"
@@ -56,6 +66,11 @@ files = [
     {file = "dearpygui-2.0.0-cp39-cp39-win_amd64.whl", hash = "sha256:ffe10b14f836cea82881fb9f66e464877429ce3ff2fbc3e33d239881cd52bada"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+reference = "mirrors"
+
 [[package]]
 name = "pastel"
 version = "0.2.1"
@@ -66,6 +81,11 @@ files = [
     {file = "pastel-0.2.1-py2.py3-none-any.whl", hash = "sha256:4349225fcdf6c2bb34d483e523475de5bb04a5c10ef711263452cb37d7dd4364"},
     {file = "pastel-0.2.1.tar.gz", hash = "sha256:e6581ac04e973cac858828c6202c1e1e81fee1dc7de7683f3e1ffe0bfd8a573d"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+reference = "mirrors"
 
 [[package]]
 name = "poethepoet"
@@ -85,15 +105,20 @@ pyyaml = ">=6.0.2,<7.0.0"
 [package.extras]
 poetry-plugin = ["poetry (>=1.0,<2.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+reference = "mirrors"
+
 [[package]]
 name = "pydantic"
-version = "2.10.2"
+version = "2.10.3"
 description = "Data validation using Python type hints"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pydantic-2.10.2-py3-none-any.whl", hash = "sha256:cfb96e45951117c3024e6b67b25cdc33a3cb7b2fa62e239f7af1378358a1d99e"},
-    {file = "pydantic-2.10.2.tar.gz", hash = "sha256:2bc2d7f17232e0841cbba4641e65ba1eb6fafb3a08de3a091ff3ce14a197c4fa"},
+    {file = "pydantic-2.10.3-py3-none-any.whl", hash = "sha256:be04d85bbc7b65651c5f8e6b9976ed9c6f41782a55524cef079a34a0bb82144d"},
+    {file = "pydantic-2.10.3.tar.gz", hash = "sha256:cb5ac360ce894ceacd69c403187900a02c4b20b693a9dd1d643e1effab9eadf9"},
 ]
 
 [package.dependencies]
@@ -104,6 +129,11 @@ typing-extensions = ">=4.12.2"
 [package.extras]
 email = ["email-validator (>=2.0.0)"]
 timezone = ["tzdata"]
+
+[package.source]
+type = "legacy"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+reference = "mirrors"
 
 [[package]]
 name = "pydantic-core"
@@ -217,6 +247,11 @@ files = [
 [package.dependencies]
 typing-extensions = ">=4.6.0,<4.7.0 || >4.7.0"
 
+[package.source]
+type = "legacy"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+reference = "mirrors"
+
 [[package]]
 name = "pyyaml"
 version = "6.0.2"
@@ -279,6 +314,11 @@ files = [
     {file = "pyyaml-6.0.2.tar.gz", hash = "sha256:d584d9ec91ad65861cc08d42e834324ef890a082e591037abe114850ff7bbc3e"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+reference = "mirrors"
+
 [[package]]
 name = "ruff"
 version = "0.8.1"
@@ -306,6 +346,11 @@ files = [
     {file = "ruff-0.8.1.tar.gz", hash = "sha256:3583db9a6450364ed5ca3f3b4225958b24f78178908d5c4bc0f46251ccca898f"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+reference = "mirrors"
+
 [[package]]
 name = "typing-extensions"
 version = "4.12.2"
@@ -317,7 +362,12 @@ files = [
     {file = "typing_extensions-4.12.2.tar.gz", hash = "sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+reference = "mirrors"
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "bd87625ec5f91acc066f3166dba124d2edaad75a4884abc960c5da1f63424000"
+content-hash = "3f6a2307466e8c0aa8c446cd6a45b5de06b4d84a661234a3caf127245f7b3c21"

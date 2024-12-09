@@ -96,6 +96,7 @@ class ModelNodeGenerator:
     def auto_gen_model_node(
         self, model: BaseModel, offset: tuple[int | float, int | float]
     ):
+        root_node = None
         models: list[tuple[int, BaseModel]] = [(0, model)]
         while models:
             parentID_model = models.pop()
@@ -112,7 +113,9 @@ class ModelNodeGenerator:
             with self.node_editor.node(
                 label=node_title,
                 user_data=model,
-            ):
+            ) as node:
+                if not root_node:
+                    root_node = node
                 with self.node_editor.node_attribute(
                     attribute_type=dpg.mvNode_Attr_Output
                 ) as self_id:
@@ -141,6 +144,8 @@ class ModelNodeGenerator:
                         if get_origin(anntation) is list:
                             anntation = get_args(anntation)[0]
 
-                        print(anntation)
+                        # print(anntation)
 
                         self.create_widget(field_name, model, field_info, value, models)
+
+        # self.node_editor.auto_layout(root_node)

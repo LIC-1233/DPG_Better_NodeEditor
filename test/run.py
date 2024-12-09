@@ -52,7 +52,6 @@ def register_font():
 
 
 def check_link(a: int, b: int):
-    print(a, b)
     return True
 
 
