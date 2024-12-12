@@ -309,6 +309,13 @@ class NodeEditor:
             self._register_node(node)
             if cllose_button:
                 with dpg.node_attribute(attribute_type=dpg.mvNode_Attr_Static):
+                    dpg.add_button(
+                        arrow=True,
+                        direction=dpg.mvDir_Down,
+                        width=20,
+                        user_data=(node, False),
+                        callback=self.node_collaps,
+                    )
                     # anchor = dpg.add_spacer(width=min_width)
                     # button = dpg.add_button(
                     #     arrow=True,
@@ -317,27 +324,19 @@ class NodeEditor:
                     #     user_data=(node, False),
                     #     callback=self.node_collaps,
                     # )
-                    dpg.add_button(
-                        arrow=True,
-                        direction=dpg.mvDir_Down,
-                        width=20,
-                        user_data=(node, False),
-                        callback=self.node_collaps,
-                    )
-
                     # def adjust_position(
                     #     sender: int | str, app_data: Any, user_data: Any
                     # ):
-                    #     max_width = 0
+                    #     max_width = min_width
                     #     for na in dpg.get_item_children(node, slot=1):  # type: ignore
                     #         for item in dpg.get_item_children(na, slot=1):  # type: ignore
                     #             try:
                     #                 item_width = dpg.get_item_rect_size(item)[0]
-                    #                 max_width = max(max_width, item_width)
+                    #                 max_width: int = max(max_width, item_width)
                     #             except Exception:
                     #                 pass
-                    # x, y = dpg.get_item_pos(anchor)
-                    # dpg.set_item_pos(button, [x + max_width, y - 30])
+                    #     x, y = dpg.get_item_pos(anchor)
+                    #     dpg.set_item_pos(button, [x + max_width, y - 30])
 
                     # with dpg.item_handler_registry() as move_handler:
                     #     dpg.add_item_visible_handler(callback=adjust_position)

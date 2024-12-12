@@ -1,5 +1,5 @@
 from types import NoneType
-from typing import Any, Literal, Optional, Union, get_args, get_origin
+from typing import Any, Callable, Literal, get_args, get_origin
 
 from dearpygui import dearpygui as dpg
 from pydantic.fields import FieldInfo
@@ -11,6 +11,14 @@ from NodeEditor import NodeEditor
 class ModelNodeGenerator:
     def __init__(self, node_editor: NodeEditor) -> None:
         self.node_editor = node_editor
+        self.dis_gen_types = [NoneType]
+        self.gen_model_attribute_method: list[
+            tuple[
+                Callable[[type, FieldInfo], bool],
+                Callable[[BaseModel, str, Any], int | str | None],
+            ]
+        ] = []
+        self.register_base_method()
 
     def create_widget(
         self,
@@ -18,7 +26,6 @@ class ModelNodeGenerator:
         model: BaseModel,
         field_info: FieldInfo,
         value: Any,
-        models: list[tuple[int, BaseModel]],
     ):
         anntation = type(value)
         title: str = field_info.title or field_name
@@ -31,15 +38,10 @@ class ModelNodeGenerator:
             with self.node_editor.node_attribute(
                 user_data=(model, field_name),
                 attribute_type=dpg.mvNode_Attr_Input,
-            ) as parent_attr_id:
+            ):
                 widget = dpg.add_text(title)
                 with dpg.tooltip(widget):
                     dpg.add_text(description)
-            if is_list:
-                for i in value:
-                    models.append((parent_attr_id, i))
-            else:
-                models.append((parent_attr_id, value))
             return
         with self.node_editor.node_attribute(
             user_data=(model, field_name),
@@ -93,59 +95,121 @@ class ModelNodeGenerator:
                 else:
                     dpg.add_text(f"not support type {anntation}")
 
-    def auto_gen_model_node(
-        self, model: BaseModel, offset: tuple[int | float, int | float]
+    def get_title(self, model: type[BaseModel]) -> str:
+        if "title" in model.model_config and model.model_config["title"]:
+            return model.model_config["title"]
+        else:
+            return model.__name__
+
+    def field_to_attribute(
+        self,
+        model: BaseModel,
+        field_name: str,
+        field_info: FieldInfo,
+        value: Any = None,
     ):
-        root_node = None
-        models: list[tuple[int, BaseModel]] = [(0, model)]
-        while models:
-            parentID_model = models.pop()
-            parent_attr_id, model = parentID_model
-            node_title = ""
+        value = getattr(model, field_name) if value is None else value
+        value_type = type(value)
+        print(value_type)
+        if value_type in self.dis_gen_types:
+            return
+        gen_method = self.get_gen_attribute_method(value_type, field_info)
+        if gen_method is not None:
+            return gen_method(model, field_name, value)
+        else:
+            return
+
+    def get_gen_attribute_method(
+        self, value_type: type, field_info: FieldInfo
+    ) -> Callable[[BaseModel, str, FieldInfo], int | str | None] | None:
+        for condition, gen_method in self.gen_model_attribute_method:
+            if condition(value_type, field_info):
+                return gen_method
+
+    def register_gen_node_atribute_method(
+        self,
+        condition: Callable[[type, FieldInfo], bool],
+        gen_method: Callable[[BaseModel, str, Any], int | str | None],
+    ):
+        self.gen_model_attribute_method.append((condition, gen_method))
+
+    def register_base_method(self):
+        def base_type_condition(value_type: type, field_info: FieldInfo) -> bool:
             if (
-                "title" in model.__class__.model_config
-                and model.__class__.model_config["title"]
+                value_type in [str, int, float, bool]
+                or issubclass(value_type, BaseModel)
+                or get_origin(value_type) is list
+                or value_type is list
             ):
-                node_title = model.__class__.model_config["title"]
-            else:
-                node_title = model.__class__.__name__
+                return True
+            return False
 
-            with self.node_editor.node(
-                label=node_title,
-                user_data=model,
-            ) as node:
-                if not root_node:
-                    root_node = node
-                with self.node_editor.node_attribute(
-                    attribute_type=dpg.mvNode_Attr_Output
-                ) as self_id:
-                    if (
-                        "title" in model.__class__.model_config
-                        and model.__class__.model_config["title"]
-                    ):
-                        title = model.__class__.model_config["title"]
+        def gen_model_attribute_base_type(
+            model: BaseModel, field_name: str, value: Any
+        ):
+            field_info = model.model_fields[field_name]
+            value_type = type(value)
+            id = None
+            if issubclass(value_type, BaseModel):
+                with dpg.node_attribute(attribute_type=dpg.mvNode_Attr_Static):
+                    id = dpg.add_button(label=self.get_title(value_type))
+            if get_origin(value_type) is list or value_type is list:
+                with dpg.node_attribute(attribute_type=dpg.mvNode_Attr_Static):
+                    id = dpg.add_button(label="collose", user_data=(True, []))
+                sub_ids = []
+                for v in value:
+                    sub_id = self.field_to_attribute(model, field_name, field_info, v)
+                    if sub_id is not None:
+                        sub_ids.append(sub_id)
+                dpg.set_item_user_data(id, (True, sub_ids))
+
+                def collose_sub_items(
+                    sender: Any, app_data: Any, user_data: tuple[bool, list[int | str]]
+                ):
+                    print(sender, app_data, user_data)
+                    sub_ids = user_data[1]
+                    if user_data[0]:
+                        for sub_id in sub_ids:
+                            dpg.hide_item(sub_id)
                     else:
-                        title = model.__class__.__name__
-                    dpg.add_text(title)
-                if parent_attr_id != 0:
-                    self.node_editor.link_attr(0, (parent_attr_id, self_id))
+                        for sub_id in sub_ids:
+                            dpg.show_item(sub_id)
+                    dpg.set_item_user_data(sender, (not user_data[0], sub_ids))
 
-                for field_name, field_info in model.model_fields.items():
-                    if value := getattr(model, field_name):
-                        anntation = field_info.annotation
-                        if get_origin(anntation) is Union:
-                            anntation = [
-                                i for i in get_args(anntation) if i not in [NoneType]
-                            ]
-                            if len(anntation) == 1:
-                                anntation = anntation[0]
-                            else:
-                                print(anntation)
-                        if get_origin(anntation) is list:
-                            anntation = get_args(anntation)[0]
+                dpg.set_item_callback(id, collose_sub_items)
+            with dpg.node_attribute(
+                attribute_type=dpg.mvNode_Attr_Static, user_data=(model, field_name)
+            ):
+                if value_type is str:
+                    title = field_info.title or field_name
+                    id = dpg.add_input_text(default_value=value, label=title)
+                elif value_type is int:
+                    title = field_info.title or field_name
+                    id = dpg.add_input_int(default_value=value, label=title)
+                elif value_type is float:
+                    title = field_info.title or field_name
+                    id = dpg.add_input_float(default_value=value, label=title)
+                elif value_type is bool:
+                    title = field_info.title or field_name
+                    id = dpg.add_checkbox(default_value=value, label=title)
+            return id
 
-                        # print(anntation)
+        self.register_gen_node_atribute_method(
+            base_type_condition, gen_model_attribute_base_type
+        )
 
-                        self.create_widget(field_name, model, field_info, value, models)
+    def model_to_node(self, model: BaseModel, offset: tuple[int, int]):
+        node_title = self.get_title(model.__class__)
 
-        # self.node_editor.auto_layout(root_node)
+        with self.node_editor.node(
+            label=node_title,
+            user_data=model,
+            pos=offset,
+        ):
+            with self.node_editor.node_attribute(attribute_type=dpg.mvNode_Attr_Output):
+                node_attribute_title = self.get_title(model.__class__)
+                dpg.add_text(node_attribute_title)
+
+            for field_name, field_info in model.model_fields.items():
+                if _value := getattr(model, field_name):
+                    self.field_to_attribute(model, field_name, field_info)

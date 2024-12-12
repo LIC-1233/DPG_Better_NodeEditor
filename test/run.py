@@ -74,7 +74,7 @@ def run():
         dpg.set_primary_window("main_window", True)
         with node_editor.node_editor(tag=editor_id, minimap=True):
             model_node_generator = ModelNodeGenerator(node_editor)
-            model_node_generator.auto_gen_model_node(hero_info, (100, 100))
+            model_node_generator.model_to_node(hero_info, (100, 100))
             with node_editor.node(label="阿比盖尔", pos=(400, 400)) as node:  # type: ignore
                 with node_editor.node_attribute() as node_attribute:
                     dpg.add_button(
