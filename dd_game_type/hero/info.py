@@ -736,6 +736,8 @@ class Generation(BaseModel):
 
 
 class HeroesInfo(BaseModel):
+    model_config = {**BaseModel.model_config, "title": "英雄信息"}
+
     resistances: Optional[Resistances] = Field(
         default=None,
         title="抗性",
@@ -762,6 +764,8 @@ class HeroesInfo(BaseModel):
     )
     combat_skill: Optional[list[CombatSkill]] = Field(
         default=None,
+        title="战斗技能",
+        description="战斗技能",
         json_schema_extra={"format": {"zh-cn": ""}, "tags": []},
     )
     riposte_skill: Optional[list[CombatSkill]] = Field(

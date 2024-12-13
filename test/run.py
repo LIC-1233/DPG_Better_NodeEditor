@@ -72,24 +72,24 @@ def run():
     dpg.create_viewport(title=" ", width=1400, height=1040)
     with dpg.window(label=" ", width=1400, height=1040, tag="main_window"):
         dpg.set_primary_window("main_window", True)
+        with dpg.theme() as theme_node_attr_no_spacing:
+            with dpg.theme_component(dpg.mvAll):
+                dpg.add_theme_style(dpg.mvStyleVar_ItemSpacing, 4, 0)
         with node_editor.node_editor(tag=editor_id, minimap=True):
             model_node_generator = ModelNodeGenerator(node_editor)
             model_node_generator.model_to_node(hero_info, (100, 100))
             with node_editor.node(label="阿比盖尔", pos=(400, 400)) as node:  # type: ignore
-                with node_editor.node_attribute() as node_attribute:
-                    dpg.add_button(
-                        label="test",
-                        callback=lambda: print(node_editor.get_link_id(node_attribute)),
-                    )
+                for i in range(20):
+                    with node_editor.node_attribute() as node_attribute:
+                        dpg.add_button(
+                            label=node_attribute,
+                            callback=lambda: dpg.bind_item_theme(
+                                node_attribute, theme_node_attr_no_spacing
+                            ),
+                        )
 
-            with node_editor.node(label="阿比盖尔", pos=(400, 400)) as node:  # type: ignore
-                with node_editor.node_attribute(
-                    attribute_type=dpg.mvNode_Attr_Output
-                ) as node_attribute:
-                    dpg.add_button(
-                        label="test",
-                        callback=lambda: print(node_editor.get_link_id(node_attribute)),
-                    )
+            # print(temp)
+            # dpg.bind_item_theme(node_attribute, theme_node_attr_no_spacing)
 
     with dpg.theme() as global_theme:
         with dpg.theme_component(dpg.mvNodeAttribute):
@@ -98,7 +98,7 @@ def run():
             )
             # dpg.add_theme_style(dpg.mvStyleVar_, 5, category=dpg.mvThemeCat_Core)
     dpg.bind_theme(global_theme)
-    # dpg.show_style_editor()
+    dpg.show_style_editor()
     dpg.setup_dearpygui()
     dpg.show_viewport()
     dpg.start_dearpygui()

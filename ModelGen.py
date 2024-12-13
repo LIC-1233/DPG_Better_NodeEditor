@@ -18,6 +18,11 @@ class ModelNodeGenerator:
                 Callable[[BaseModel, str, Any], int | str | None],
             ]
         ] = []
+        self.theme_normal = dpg.add_theme()
+        with dpg.theme() as theme_node_attr_no_spacing:
+            with dpg.theme_component(dpg.mvAll):
+                dpg.add_theme_style(dpg.mvStyleVar_ItemSpacing, 4, 0)
+        self.theme_node_attr_no_spacing = theme_node_attr_no_spacing
         self.register_base_method()
 
     def create_widget(
@@ -110,7 +115,6 @@ class ModelNodeGenerator:
     ):
         value = getattr(model, field_name) if value is None else value
         value_type = type(value)
-        print(value_type)
         if value_type in self.dis_gen_types:
             return
         gen_method = self.get_gen_attribute_method(value_type, field_info)
@@ -122,7 +126,7 @@ class ModelNodeGenerator:
     def get_gen_attribute_method(
         self, value_type: type, field_info: FieldInfo
     ) -> Callable[[BaseModel, str, FieldInfo], int | str | None] | None:
-        for condition, gen_method in self.gen_model_attribute_method:
+        for condition, gen_method in self.gen_model_attribute_method[::-1]:
             if condition(value_type, field_info):
                 return gen_method
 
@@ -150,49 +154,107 @@ class ModelNodeGenerator:
             field_info = model.model_fields[field_name]
             value_type = type(value)
             id = None
+
+            # BaseModel
             if issubclass(value_type, BaseModel):
-                with dpg.node_attribute(attribute_type=dpg.mvNode_Attr_Static):
-                    id = dpg.add_button(label=self.get_title(value_type))
-            if get_origin(value_type) is list or value_type is list:
-                with dpg.node_attribute(attribute_type=dpg.mvNode_Attr_Static):
-                    id = dpg.add_button(label="collose", user_data=(True, []))
+                with self.node_editor.node_attribute(
+                    attribute_type=dpg.mvNode_Attr_Static, user_data=(model, field_name)
+                ) as id:
+                    dpg.add_button(label=self.get_title(value_type))
+
+            # list
+            elif get_origin(value_type) is list or value_type is list:
+                with self.node_editor.node_attribute(
+                    attribute_type=dpg.mvNode_Attr_Static
+                ):
+                    with dpg.group(horizontal=True):
+                        button_id = dpg.add_button(
+                            arrow=True, direction=dpg.mvDir_Down, user_data=(True, [])
+                        )
+                        dpg.add_text(field_info.title or field_name)
                 sub_ids = []
                 for v in value:
                     sub_id = self.field_to_attribute(model, field_name, field_info, v)
                     if sub_id is not None:
                         sub_ids.append(sub_id)
-                dpg.set_item_user_data(id, (True, sub_ids))
+                dpg.set_item_user_data(button_id, (True, sub_ids))
 
                 def collose_sub_items(
                     sender: Any, app_data: Any, user_data: tuple[bool, list[int | str]]
                 ):
-                    print(sender, app_data, user_data)
-                    sub_ids = user_data[1]
+                    sub_node_attr_ids = user_data[1]
                     if user_data[0]:
-                        for sub_id in sub_ids:
-                            dpg.hide_item(sub_id)
+                        for sub_node_attr_id in sub_node_attr_ids:
+                            sub_items = dpg.get_item_children(sub_node_attr_id, slot=1)
+                            if sub_items:
+                                for sub_item in sub_items:
+                                    dpg.hide_item(sub_item)
+                            dpg.configure_item(sender, direction=dpg.mvDir_Right)
+                            dpg.bind_item_theme(
+                                sub_node_attr_id, self.theme_node_attr_no_spacing
+                            )
                     else:
-                        for sub_id in sub_ids:
-                            dpg.show_item(sub_id)
-                    dpg.set_item_user_data(sender, (not user_data[0], sub_ids))
+                        for sub_node_attr_id in sub_node_attr_ids:
+                            sub_items = dpg.get_item_children(sub_node_attr_id, slot=1)
+                            if sub_items:
+                                for sub_item in sub_items:
+                                    dpg.show_item(sub_item)
+                            dpg.configure_item(sender, direction=dpg.mvDir_Down)
+                            dpg.bind_item_theme(sub_node_attr_id, self.theme_normal)
+                    dpg.set_item_user_data(
+                        sender, (not user_data[0], sub_node_attr_ids)
+                    )
 
-                dpg.set_item_callback(id, collose_sub_items)
-            with dpg.node_attribute(
-                attribute_type=dpg.mvNode_Attr_Static, user_data=(model, field_name)
+                dpg.set_item_callback(button_id, collose_sub_items)
+                collose_sub_items(button_id, None, (True, sub_ids))
+
+            # base type
+            else:
+                with self.node_editor.node_attribute(
+                    attribute_type=dpg.mvNode_Attr_Static, user_data=(model, field_name)
+                ) as id:
+                    if value_type is str:
+                        title = field_info.title or field_name
+                        dpg.add_input_text(
+                            default_value=value,
+                            label=title,
+                            user_data=id,
+                            callback=lambda: base_type_callback,
+                        )
+                    elif value_type is int:
+                        title = field_info.title or field_name
+                        dpg.add_input_int(
+                            default_value=value,
+                            label=title,
+                            user_data=id,
+                            callback=lambda: base_type_callback,
+                        )
+                    elif value_type is float:
+                        title = field_info.title or field_name
+                        dpg.add_input_float(
+                            default_value=value,
+                            label=title,
+                            user_data=id,
+                            callback=lambda: base_type_callback,
+                        )
+                    elif value_type is bool:
+                        title = field_info.title or field_name
+                        dpg.add_checkbox(
+                            default_value=value,
+                            label=title,
+                            user_data=id,
+                            callback=lambda: base_type_callback,
+                        )
+
+            def base_type_callback(
+                sender: int | str, app_data: int | str, user_data: int | str
             ):
-                if value_type is str:
-                    title = field_info.title or field_name
-                    id = dpg.add_input_text(default_value=value, label=title)
-                elif value_type is int:
-                    title = field_info.title or field_name
-                    id = dpg.add_input_int(default_value=value, label=title)
-                elif value_type is float:
-                    title = field_info.title or field_name
-                    id = dpg.add_input_float(default_value=value, label=title)
-                elif value_type is bool:
-                    title = field_info.title or field_name
-                    id = dpg.add_checkbox(default_value=value, label=title)
-            return id
+                parent_id = user_data
+                model, field_name = dpg.get_item_user_data(parent_id)  # type: ignore
+                setattr(model, field_name, app_data)
+
+            if isinstance(id, str) or isinstance(id, int) or isinstance(id, NoneType):
+                return id
 
         self.register_gen_node_atribute_method(
             base_type_condition, gen_model_attribute_base_type

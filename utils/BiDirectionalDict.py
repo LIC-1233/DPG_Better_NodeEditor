@@ -1,17 +1,17 @@
 from collections import defaultdict
-from typing import Generic, TypeVar
+from typing import Generic, Hashable, TypeVar
 
-T = TypeVar("T")
+_VT = TypeVar("_VT", bound=Hashable)
+_KT = TypeVar("_KT", bound=Hashable)
 
-
-class BiDirectionalDict(Generic[T]):
+class BiDirectionalDict(Generic[_KT, _VT]):
     def __init__(self):
         # 原始映射：从键到值列表
-        self.forward_map: dict[T, list[T]] = defaultdict(list)
+        self.forward_map: dict[_KT, list[_VT]] = defaultdict(list)
         # 反转映射：从值到键列表
-        self.reverse_map: dict[T, list[T]] = defaultdict(list)
+        self.reverse_map: dict[_VT, list[_KT]] = defaultdict(list)
 
-    def add(self, key: T, values: list[T] | T):
+    def add(self, key: _KT, values: list[_VT] | _VT):
         """
         添加或更新一个键和它的值列表。
         :param key: 字符串类型的键
@@ -27,7 +27,7 @@ class BiDirectionalDict(Generic[T]):
             for value in values:
                 self.reverse_map[value].append(key)
 
-    def get_keys_by_value(self, value: T):
+    def get_keys_by_value(self, value: _VT):
         """
         通过单个值查找所有关联的键。
         :param value: 要查找的值
@@ -35,7 +35,7 @@ class BiDirectionalDict(Generic[T]):
         """
         return self.reverse_map.get(value, [])
 
-    def get_values_by_key(self, key: T):
+    def get_values_by_key(self, key: _KT):
         """
         通过键查找所有关联的值。
         :param key: 要查找的键
@@ -43,7 +43,7 @@ class BiDirectionalDict(Generic[T]):
         """
         return self.forward_map.get(key, [])
 
-    def remove_key(self, key: T):
+    def remove_key(self, key: _KT):
         """
         移除一个键及其对应的值，并更新反转映射。
         :param key: 要移除的键
@@ -55,7 +55,7 @@ class BiDirectionalDict(Generic[T]):
                     del self.reverse_map[value]
             del self.forward_map[key]
 
-    def remove_value(self, value: T):
+    def remove_value(self, value: _VT):
         """
         移除一个值及其对应的键，并更新原始映射。
         :param value: 要移除的值
@@ -67,7 +67,7 @@ class BiDirectionalDict(Generic[T]):
                     del self.forward_map[key]
             del self.reverse_map[value]
 
-    def remove(self, key: T | None = None, value: T | None = None):
+    def remove(self, key: _KT | None = None, value: _VT | None = None):
         if key and not value:
             self.remove_key(key)
         elif value and not key:
@@ -80,7 +80,7 @@ class BiDirectionalDict(Generic[T]):
             if not self.reverse_map[value]:
                 del self.reverse_map[value]
 
-    def __getitem__(self, key: T):
+    def __getitem__(self, key: _KT):
         return self.get_values_by_key(key)
 
     def keys(self):

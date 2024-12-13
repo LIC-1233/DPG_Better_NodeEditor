@@ -37,9 +37,16 @@ class NodeEditor:
         self.node_editor_instance: int
         self.node_list = []
         self.node_attr_list = []
-        self.node_attr_map: BiDirectionalDict[int | str] = BiDirectionalDict()
+        self.node_attr_map: BiDirectionalDict[int | str, int | str] = (
+            BiDirectionalDict()
+        )
         self.link_list = []
-        self.link_chain: BiDirectionalDict[int | str] = BiDirectionalDict()
+        self.link_chain: BiDirectionalDict[int | str, int | str] = BiDirectionalDict()
+        self.theme_normal = dpg.add_theme()
+        with dpg.theme() as theme_node_attr_no_spacing:
+            with dpg.theme_component(dpg.mvAll):
+                dpg.add_theme_style(dpg.mvStyleVar_ItemSpacing, 4, 0)
+        self.theme_node_attr_no_spacing = theme_node_attr_no_spacing
 
     def _on_click_global(self):
         # 节点属性右键菜单
@@ -88,13 +95,16 @@ class NodeEditor:
     ):
         node, collaps = user_data
         for node_attr in self.node_attr_map[node]:
-            for item in dpg.get_item_children(node_attr, slot=1):  # type: ignore
-                if collaps:
+            if collaps:
+                for item in dpg.get_item_children(node_attr, slot=1):  # type: ignore
                     dpg.show_item(item)
-                    dpg.configure_item(sender, direction=dpg.mvDir_Down)
-                else:
+                dpg.configure_item(sender, direction=dpg.mvDir_Down)
+                dpg.bind_item_theme(node_attr, self.theme_normal)
+            else:
+                for item in dpg.get_item_children(node_attr, slot=1):  # type: ignore
                     dpg.hide_item(item)
-                    dpg.configure_item(sender, direction=dpg.mvDir_Right)
+                dpg.configure_item(sender, direction=dpg.mvDir_Right)
+                dpg.bind_item_theme(node_attr, self.theme_node_attr_no_spacing)
         dpg.set_item_user_data(sender, (node, not collaps))
 
     # 链接双方的部件是否一样检查
@@ -163,7 +173,7 @@ class NodeEditor:
         ]
 
     def gen_node_network(self, node_id: int | str | None = None):
-        in_out_node_maps: BiDirectionalDict[int | str] = BiDirectionalDict()
+        in_out_node_maps: BiDirectionalDict[int | str, int | str] = BiDirectionalDict()
         for in_attr, out_attr in self.link_chain:
             for in_node in self.node_attr_map.get_keys_by_value(in_attr):
                 for out_node in self.node_attr_map.get_keys_by_value(out_attr):
