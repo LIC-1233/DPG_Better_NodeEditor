@@ -196,8 +196,12 @@ class Armour(BaseModel):
 
 
 class CombatSkill(BaseModel):
-    class Config:
-        extra = "allow"  # 忽略额外字段
+    model_config = {
+        **BaseModel.model_config,
+        "extra": "allow",
+        "title": "战斗技能",
+        "primary_key": "id",
+    }
 
     def __post_init__(self):
         # 获取模型中定义的字段名
@@ -219,8 +223,8 @@ class CombatSkill(BaseModel):
             if disallowed_extra:
                 raise ValidationError(f"Disallowed extra fields: {disallowed_extra}")
 
-    id: Optional[str] = Field(
-        default=None,
+    id: str = Field(
+        default="",
         title="技能id",
         description="技能id",
         json_schema_extra={"format": {"zh-cn": ""}, "tags": []},

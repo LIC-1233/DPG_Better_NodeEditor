@@ -95,3 +95,6 @@ class BiDirectionalDict(Generic[_KT, _VT]):
 
     def __repr__(self):
         return self.forward_map.__repr__()
+
+    def __contains__(self, item: _KT | _VT):
+        return item in self.forward_map or item in self.reverse_map

@@ -79,7 +79,7 @@ def run():
             model_node_generator = ModelNodeGenerator(node_editor)
             model_node_generator.model_to_node(hero_info, (100, 100))
             with node_editor.node(label="阿比盖尔", pos=(400, 400)) as node:  # type: ignore
-                for i in range(20):
+                for _ in range(20):
                     with node_editor.node_attribute() as node_attribute:
                         dpg.add_button(
                             label=node_attribute,

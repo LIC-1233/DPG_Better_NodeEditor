@@ -106,6 +106,14 @@ class ModelNodeGenerator:
         else:
             return model.__name__
 
+    def get_primary_key(self, model: BaseModel) -> str:
+        if "primary_key" in model.model_config and model.model_config["primary_key"]:
+            try:
+                return getattr(model, model.model_config["primary_key"])
+            except Exception:
+                pass
+        return self.get_title(type(model))
+
     def field_to_attribute(
         self,
         model: BaseModel,
@@ -160,7 +168,12 @@ class ModelNodeGenerator:
                 with self.node_editor.node_attribute(
                     attribute_type=dpg.mvNode_Attr_Static, user_data=(model, field_name)
                 ) as id:
-                    dpg.add_button(label=self.get_title(value_type))
+                    dpg.add_button(
+                        label=self.get_primary_key(value),
+                        callback=lambda: dpg.configure_item(
+                            id, attribute_type=dpg.mvNode_Attr_Input
+                        ),
+                    )
 
             # list
             elif get_origin(value_type) is list or value_type is list:
